@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marouane JORIO - CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <script>
+  function switchLang(lang) {
+    document.querySelectorAll('[lang-fr]').forEach(el => el.style.display = lang === 'fr' ? 'block' : 'none');
+    document.querySelectorAll('[lang-en]').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
+  }
+  </script>
+  <style>
+    .lang-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 2000;
+    }
+    .lang-toggle button {
+      margin: 0 0.2rem;
+      padding: 0.3rem 0.6rem;
+      border: none;
+      background: #00796b;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+      color: #212121;
+      padding-top: 200px;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: white;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    header img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #00796b;
+    }
+    .subtitle {
+      color: #555;
+      margin-bottom: 1rem;
+    }
+    .contact-icons i {
+      margin: 0 0.5rem;
+      color: #00796b;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem;
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+    h2 {
+      color: #00796b;
+      border-bottom: 2px solid #b2dfdb;
+      padding-bottom: 0.3rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    .badge {
+      background: #00796b;
+      color: white;
+      padding: 0.3rem 0.6rem;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      margin-right: 0.4rem;
+      display: inline-block;
+      margin-bottom: 0.4rem;
+    }
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      background: #004d40;
+      color: white;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body onload="switchLang('fr')">
+  <div class="lang-toggle">
+    <button onclick="switchLang('fr')">FR</button>
+    <button onclick="switchLang('en')">EN</button>
+  </div>
+
+  <header>
+    <h1>Marouane JORIO</h1>
+    <p class="subtitle" lang-fr>Élève ingénieur en électronique – Bordeaux, France<br>Permis B</p>
+    <p class="subtitle" lang-en>Electronics Engineering Student – Bordeaux, France<br>Driving License B</p>
+    <div class="contact-icons">
+      <a href="mailto:jorio.marouane@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="tel:+33673829662"><i class="fas fa-phone"></i></a>
+      <a href="https://www.linkedin.com/in/marouane-jorio-255a8821b/"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/marouanejorio"><i class="fab fa-github"></i></a>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Toutes les sections du CV seront dupliquées avec lang-fr / lang-en -->
+    <section>
+      <h2 lang-fr>Formation</h2>
+      <h2 lang-en>Education</h2>
+      <ul lang-fr>
+        <li>Diplôme d’ingénieur en électronique – ENSEIRB-MATMECA, Bordeaux INP (2024–2027), Talence</li>
+        <li>Licence mention Physique – Université de Limoges (2021–2024), option Electronique des Hautes Fréquences et Photonique</li>
+        <li>Baccalauréat international option mathématiques – Établissement Secondaire Lazrak (09/2020 – 06/2021), Fès, Maroc</li>
+      </ul>
+      <ul lang-en>
+        <li>Engineering Degree in Electronics – ENSEIRB-MATMECA, Bordeaux INP (2024–2027), Talence</li>
+        <li>Bachelor’s Degree in Physics – University of Limoges (2021–2024), specialization in High Frequency Electronics and Photonics</li>
+        <li>International Baccalaureate, Mathematics – Lazrak Secondary School (09/2020 – 06/2021), Fez, Morocco</li>
+      </ul>
+    </section>
+
+<!-- Code précédent conservé -->
+
+    <section>
+      <h2 lang-fr>Projets</h2>
+      <h2 lang-en>Projects</h2>
+      <div class="job" lang-fr>
+        <p>FPGA – ENSEIRB-MATMECA (2025)</p>
+        <ul>
+          <li>Générateur de nombres pseudo-aléatoires (1 à 49)</li>
+          <li>Affichage sur afficheur 7 segments</li>
+          <li>Modélisation en VHDL et validation sur carte FPGA</li>
+        </ul>
+      </div>
+      <div class="job" lang-en>
+        <p>FPGA – ENSEIRB-MATMECA (2025)</p>
+        <ul>
+          <li>Pseudo-random number generator (1 to 49)</li>
+          <li>Display using 7-segment display</li>
+          <li>Modeling in VHDL and validation on FPGA board</li>
+        </ul>
+      </div>
+      <div class="job" lang-fr>
+        <p>Projet analogique – ENSEIRB-MATMECA (2025)</p>
+        <ul>
+          <li>Conception et réalisation d’un circuit imprimé (PCB) pour un amplificateur audio</li>
+          <li>Schématisation, routage, soudure des composants</li>
+          <li>Validation fonctionnelle par tests audio</li>
+        </ul>
+      </div>
+      <div class="job" lang-en>
+        <p>Analog Project – ENSEIRB-MATMECA (2025)</p>
+        <ul>
+          <li>Design and implementation of a printed circuit board (PCB) for an audio amplifier</li>
+          <li>Schematics, routing, and soldering of components</li>
+          <li>Functional validation via audio testing</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2 lang-fr>Certifications</h2>
+      <h2 lang-en>Certifications</h2>
+      <ul lang-fr>
+        <li>Personne Exposée aux Risques Laser (PERL) – PYLA (02/2024), validité 5 ans</li>
+        <li>Embedded Systems Essentials with ARM – ArmEducationX (2022), <a href="https://courses.edx.org/certificates/ee5463969f29434695b9c67d4e8060d3">voir certificat</a></li>
+        <li>Python Basics for Data Science – IBM (2022), <a href="https://courses.edx.org/certificates/b6f1e28e4bb74b48be05c20a7d3f3af8">voir certificat</a></li>
+        <li>Certificat Radioamateur – ANFR (01/2025), validité à vie</li>
+      </ul>
+      <ul lang-en>
+        <li>Laser Risk Exposure Certification (PERL) – PYLA (02/2024), valid for 5 years</li>
+        <li>Embedded Systems Essentials with ARM – ArmEducationX (2022), <a href="https://courses.edx.org/certificates/ee5463969f29434695b9c67d4e8060d3">view certificate</a></li>
+        <li>Python Basics for Data Science – IBM (2022), <a href="https://courses.edx.org/certificates/b6f1e28e4bb74b48be05c20a7d3f3af8">view certificate</a></li>
+        <li>Radio Amateur License – ANFR (01/2025), valid for life</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 lang-fr>Bénévolat</h2>
+      <h2 lang-en>Volunteering</h2>
+      <div class="job" lang-fr>
+        <p>Chargé de création de contenu numérique – Leo Club Fès (2020–2021)</p>
+        <ul>
+          <li>Production de supports digitaux pour les activités sociales et éducatives</li>
+          <li>Communication affiliée au Lions Club International</li>
+        </ul>
+      </div>
+      <div class="job" lang-en>
+        <p>Digital Content Creator – Leo Club Fez (2020–2021)</p>
+        <ul>
+          <li>Produced digital materials for social and educational activities</li>
+          <li>Communicated in coordination with Lions Club International</li>
+        </ul>
+      </div>
+      <div class="job" lang-fr>
+        <p>Membre – Erasmus Student Network (ESN), Bordeaux (2025)</p>
+        <ul>
+          <li>Participation aux activités d’accueil et d’intégration des étudiants internationaux</li>
+          <li>Engagement dans des projets interculturels et associatifs</li>
+        </ul>
+      </div>
+      <div class="job" lang-en>
+        <p>Member – Erasmus Student Network (ESN), Bordeaux (2025)</p>
+        <ul>
+          <li>Participated in welcome and integration activities for international students</li>
+          <li>Involved in intercultural and community-based projects</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2 lang-fr>Compétences</h2>
+      <h2 lang-en>Skills</h2>
+      <p lang-fr><strong>Informatique :</strong></p>
+      <p lang-en><strong>Computing:</strong></p>
+      <div lang-fr>
+        <span class="badge">Python</span>
+        <span class="badge">VSA</span>
+        <span class="badge">Matlab</span>
+        <span class="badge">ADS</span>
+        <span class="badge">PyQt5</span>
+        <span class="badge">Langage C</span>
+        <span class="badge">Microsoft Office</span>
+      </div>
+      <div lang-en>
+        <span class="badge">Python</span>
+        <span class="badge">VSA</span>
+        <span class="badge">Matlab</span>
+        <span class="badge">ADS</span>
+        <span class="badge">PyQt5</span>
+        <span class="badge">C Language</span>
+        <span class="badge">Microsoft Office</span>
+      </div>
+      <p lang-fr><strong>Électronique :</strong></p>
+      <p lang-en><strong>Electronics:</strong></p>
+      <div lang-fr>
+        <span class="badge">Circuits HF</span>
+        <span class="badge">Électronique Analogique</span>
+        <span class="badge">Électronique Numérique</span>
+        <span class="badge">Traitement du signal</span>
+        <span class="badge">Électronique de puissance</span>
+      </div>
+      <div lang-en>
+        <span class="badge">RF Circuits</span>
+        <span class="badge">Analog Electronics</span>
+        <span class="badge">Digital Electronics</span>
+        <span class="badge">Signal Processing</span>
+        <span class="badge">Power Electronics</span>
+      </div>
+    </section>
+
+    <section>
+      <h2 lang-fr>Langues</h2>
+      <h2 lang-en>Languages</h2>
+      <div lang-fr>
+        <span class="badge">Arabe (langue natale)</span>
+        <span class="badge">Français (DALF C1)</span>
+        <span class="badge">Anglais (TOEIC 900/990)</span>
+      </div>
+      <div lang-en>
+        <span class="badge">Arabic (native)</span>
+        <span class="badge">French (DALF C1)</span>
+        <span class="badge">English (TOEIC 900/990)</span>
+      </div>
+    </section>
+
+    <section>
+      <h2 lang-fr>Centres d'intérêt & personnalité</h2>
+      <h2 lang-en>Interests & Personality</h2>
+      <p lang-fr>Retouche photo, Voyages, Basketball, Ping-pong</p>
+      <p lang-en>Photo editing, Travel, Basketball, Table tennis</p>
+      <p lang-fr>Organisation, Communication, Travail en équipe</p>
+      <p lang-en>Organization, Communication, Teamwork</p>
+    </section>
+
+      </div>
+
+      <div class="footer">
+        © Marouane JORIO – Mis à jour en 2025 – Carte NFC
+      </div>
+</body>
+</html>
