@@ -6,12 +6,17 @@
   <title>Marouane JORIO - CV</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
-  <script>
+<script>
   function switchLang(lang) {
-    document.querySelectorAll('[lang-fr]').forEach(el => el.style.display = lang === 'fr' ? 'block' : 'none');
-    document.querySelectorAll('[lang-en]').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
+    document.querySelectorAll('[lang-fr]').forEach(el => {
+      el.style.display = lang === 'fr' ? '' : 'none';
+    });
+    document.querySelectorAll('[lang-en]').forEach(el => {
+      el.style.display = lang === 'en' ? '' : 'none';
+    });
   }
-  </script>
+</script>
+
   <style>
     .lang-toggle {
       position: fixed;
@@ -100,6 +105,61 @@
       color: white;
       font-size: 0.9rem;
     }
+.certifications {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 16px;
+  padding: 10px 0;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #00796b #e0f7fa;
+}
+
+.certifications::-webkit-scrollbar {
+  height: 8px;
+}
+.certifications::-webkit-scrollbar-thumb {
+  background-color: #00796b;
+  border-radius: 4px;
+}
+
+.cert-block {
+  flex: 0 0 auto;
+  width: 220px;
+  min-width: 220px;
+  background-color: #ffffff;
+  padding: 15px;
+  border: 1px solid #b2dfdb;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+
+
+
+    .cert-block img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .cert-block {
+        flex: 0 0 250px;
+      }
+
+    }
+
   </style>
 </head>
 <body onload="switchLang('fr')">
@@ -179,18 +239,58 @@
     <section>
       <h2 lang-fr>Certifications</h2>
       <h2 lang-en>Certifications</h2>
-      <ul lang-fr>
-        <li>Personne Exposée aux Risques Laser (PERL) – PYLA (02/2024), validité 5 ans</li>
-        <li>Embedded Systems Essentials with ARM – ArmEducationX (2022), <a href="https://courses.edx.org/certificates/ee5463969f29434695b9c67d4e8060d3">voir certificat</a></li>
-        <li>Python Basics for Data Science – IBM (2022), <a href="https://courses.edx.org/certificates/b6f1e28e4bb74b48be05c20a7d3f3af8">voir certificat</a></li>
-        <li>Certificat Radioamateur – ANFR (01/2025), validité à vie</li>
-      </ul>
-      <ul lang-en>
-        <li>Laser Risk Exposure Certification (PERL) – PYLA (02/2024), valid for 5 years</li>
-        <li>Embedded Systems Essentials with ARM – ArmEducationX (2022), <a href="https://courses.edx.org/certificates/ee5463969f29434695b9c67d4e8060d3">view certificate</a></li>
-        <li>Python Basics for Data Science – IBM (2022), <a href="https://courses.edx.org/certificates/b6f1e28e4bb74b48be05c20a7d3f3af8">view certificate</a></li>
-        <li>Radio Amateur License – ANFR (01/2025), valid for life</li>
-      </ul>
+
+      <div class="certifications" lang-fr>
+        <div class="cert-block">
+          <img
+  src="https://www.alphanov.com/sites/default/files/2025-03/Logo_EN_Baseline_Pyla.png"
+  alt="Logo PYLA"
+  width="80"
+  height="80">
+          Personne Exposée aux Risques Laser (PERL) – PYLA (02/2024), validité 5 ans
+        </div>
+        <div class="cert-block">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Arm_logo_2025.svg/500px-Arm_logo_2025.svg.png" alt="ARM">
+          Embedded Systems Essentials with ARM – ArmEducationX (2022),
+          <br><a href="https://courses.edx.org/certificates/ee5463969f29434695b9c67d4e8060d3">voir certificat</a>
+        </div>
+        <div class="cert-block">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/120px-IBM_logo.svg.png" alt="IBM">
+          Python Basics for Data Science – IBM (2022),
+          <br><a href="https://courses.edx.org/certificates/b6f1e28e4bb74b48be05c20a7d3f3af8">voir certificat</a>
+        </div>
+        <div class="cert-block">
+          <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/b/b5/AFNR_Logo.svg/266px-AFNR_Logo.svg.png?20210711194337" alt="ANFR">
+          Certificat Radioamateur – ANFR (01/2025), validité à vie
+        </div>
+      </div>
+
+
+<div class="certifications" lang-en>
+  <div class="cert-block">
+    <img
+      src="https://www.alphanov.com/sites/default/files/2025-03/Logo_EN_Baseline_Pyla.png"
+      alt="PYLA Logo"
+      width="80"
+      height="80">
+    Laser Risk Exposure Certification (PERL) – PYLA (02/2024), valid for 5 years
+  </div>
+  <div class="cert-block">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Arm_logo_2025.svg/500px-Arm_logo_2025.svg.png" alt="ARM">
+    Embedded Systems Essentials with ARM – ArmEducationX (2022),
+    <br><a href="https://courses.edx.org/certificates/ee5463969f29434695b9c67d4e8060d3">view certificate</a>
+  </div>
+  <div class="cert-block">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/120px-IBM_logo.svg.png" alt="IBM">
+    Python Basics for Data Science – IBM (2022),
+    <br><a href="https://courses.edx.org/certificates/b6f1e28e4bb74b48be05c20a7d3f3af8">view certificate</a>
+  </div>
+  <div class="cert-block">
+    <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/b/b5/AFNR_Logo.svg/266px-AFNR_Logo.svg.png?20210711194337" alt="ANFR">
+    Radio Amateur Certificate – ANFR (01/2025), valid for life
+  </div>
+</div>
+
     </section>
 
     <section>
