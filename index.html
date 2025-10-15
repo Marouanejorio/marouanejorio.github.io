@@ -2,474 +2,410 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Marouane JORIO - CV</title>
+
+  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
-<script>
-  function switchLang(lang) {
-    document.querySelectorAll('[lang-fr]').forEach(el => {
-      el.style.display = lang === 'fr' ? '' : 'none';
-    });
-    document.querySelectorAll('[lang-en]').forEach(el => {
-      el.style.display = lang === 'en' ? '' : 'none';
-    });
-  }
-</script>
 
-  <style>
-    .lang-toggle {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 2000;
-    }
-    .lang-toggle button {
-      margin: 0 0.2rem;
-      padding: 0.3rem 0.6rem;
-      border: none;
-      background: #00796b;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(to right, #e0f7fa, #f1f8e9);
-      color: #212121;
-      padding-top: 200px;
-    }
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: white;
-      text-align: center;
-      padding: 1.5rem 1rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    header img {
-      border-radius: 50%;
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      margin-bottom: 1rem;
-    }
-    h1 {
-      margin: 0;
-      font-size: 2rem;
-      color: #00796b;
-    }
-    .subtitle {
-      color: #555;
-      margin-bottom: 1rem;
-    }
-    .contact-icons i {
-      margin: 0 0.5rem;
-      color: #00796b;
-    }
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 2rem;
-    }
-    section {
-      margin-bottom: 2rem;
-    }
-    h2 {
-      color: #00796b;
-      border-bottom: 2px solid #b2dfdb;
-      padding-bottom: 0.3rem;
-    }
-    ul {
-      padding-left: 1.2rem;
-    }
-    .badge {
-      background: #00796b;
-      color: white;
-      padding: 0.3rem 0.6rem;
-      border-radius: 5px;
-      font-size: 0.9rem;
-      margin-right: 0.4rem;
-      display: inline-block;
-      margin-bottom: 0.4rem;
-    }
-    .footer {
-      text-align: center;
-      padding: 1rem;
-      background: #004d40;
-      color: white;
-      font-size: 0.9rem;
-    }
-
-    .certifications {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      gap: 16px;
-      padding: 10px 0;
-      margin: 0 auto;
-      width: 100%;
-      box-sizing: border-box;
-      scrollbar-width: thin;
-      scrollbar-color: #00796b #e0f7fa;
-    }
-
-    .certifications::-webkit-scrollbar {
-      height: 8px;
-    }
-    .certifications::-webkit-scrollbar-thumb {
-      background-color: #00796b;
-      border-radius: 4px;
-    }
-
-    .cert-block {
-      flex: 0 0 auto;
-      width: 220px;
-      min-width: 220px;
-      padding: 0;
-      /* border: 2px solid #00796b; */
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      box-sizing: border-box;
-    }
-
-    .cert-logo {
-      background-color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-    }
-
-    .cert-logo img {
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
-    }
-    
-
-.cert-text {
-  background-color: #f5f5f5;
-  text-align: center;
-  padding: 12px;
-  font-size: 0.95rem;
-  word-wrap: break-word;
-  hyphens: auto;
-  line-height: 1.4;
-  border-top: 1px solid #e0e0e0;
-}
-.cert-text strong {
-  display: block;
-  margin-bottom: 10px;
-  padding: 6px 0;
-  background-color: #e0f2f1; /* couleur mate douce */
-  color: #004d40;            /* contraste agréable */
-  border-radius: 4px;
-  font-weight: 700;
-  text-align: center;
-}
-
-    @media (max-width: 900px) {
-      .cert-block {
-        flex: 0 0 250px;
-      }
-
-    }
-
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body onload="switchLang('fr')">
+
+<body>
+  <!-- Lang toggle -->
   <div class="lang-toggle">
-    <button onclick="switchLang('fr')">FR</button>
-    <button onclick="switchLang('en')">EN</button>
+    <button id="btn-fr" class="active">FR</button>
+    <button id="btn-en">EN</button>
   </div>
 
-  <header>
+  <!-- Header -->
+  <header class="site-header">
     <h1>Marouane JORIO</h1>
-    <p class="subtitle" lang-fr>Élève ingénieur en électronique – Bordeaux, France<br>Permis B</p>
-    <p class="subtitle" lang-en>Electronics Engineering Student – Bordeaux, France<br>Driving License B</p>
+    <p class="subtitle" lang-fr>Élève ingénieur en électronique – Bordeaux, France · Permis B</p>
+    <p class="subtitle" lang-en>Electronics Engineering Student – Bordeaux, France · Driving License B</p>
     <div class="contact-icons">
-      <a href="mailto:jorio.marouane@gmail.com"><i class="fas fa-envelope"></i></a>
-      <a href="tel:+33673829662"><i class="fas fa-phone"></i></a>
-      <a href="https://www.linkedin.com/in/marouane-jorio-255a8821b/"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/marouanejorio"><i class="fab fa-github"></i></a>
+      <a href="mailto:jorio.marouane@gmail.com" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
+      <a href="tel:+33673829662" aria-label="Téléphone"><i class="fas fa-phone"></i></a>
+      <a href="https://www.linkedin.com/in/marouane-jorio-255a8821b/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/marouanejorio" target="_blank" rel="noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
     </div>
   </header>
 
-  <div class="container">
-    <!-- Toutes les sections du CV seront dupliquées avec lang-fr / lang-en -->
-    <section>
-      <h2 lang-fr>Formation</h2>
-      <h2 lang-en>Education</h2>
+  <main class="container">
+
+    <!-- Formation -->
+    <h2 class="section-title" lang-fr>Formation</h2>
+    <h2 class="section-title" lang-en>Education</h2>
+    <div class="cards-grid">
+      <article class="card-block" data-id="eirb">
+        <h3 lang-fr>Diplôme d’ingénieur – ENSEIRB-MATMECA</h3>
+        <h3 lang-en>Engineering Degree – ENSEIRB-MATMECA</h3>
+        <p lang-fr>2024–2027 · Talence</p>
+        <p lang-en>2024–2027 · Talence</p>
+      </article>
+
+      <article class="card-block" data-id="ulim">
+        <h3 lang-fr>Licence Physique – Univ. de Limoges</h3>
+        <h3 lang-en>Bachelor’s in Physics – Univ. of Limoges</h3>
+        <p lang-fr>2021–2024 · EHF & Photonique</p>
+        <p lang-en>2021–2024 · High-Frequency & Photonics</p>
+      </article>
+
+      <article class="card-block" data-id="bac">
+        <h3 lang-fr>Baccalauréat international – Lazrak</h3>
+        <h3 lang-en>International Baccalaureate – Lazrak</h3>
+        <p lang-fr>09/2020 – 06/2021 · Fès</p>
+        <p lang-en>09/2020 – 06/2021 · Fez</p>
+      </article>
+      <!-- 🆕 Carte vide 1 --></div>
+
+    <!-- Expérience -->
+    <h2 class="section-title" lang-fr>Expérience</h2>
+    <h2 class="section-title" lang-en>Experience</h2>
+    <div class="cards-grid">
+      <article class="card-block" data-id="selva">
+        <h3 lang-fr>Stage R&D – SELVA SYSTEMS</h3>
+        <h3 lang-en>R&D Internship – SELVA SYSTEMS</h3>
+        <p lang-fr>06/2025 – 07/2025 · Limoges</p>
+        <p lang-en>06/2025 – 07/2025 · Limoges</p>
+        <p class="muted" lang-fr>Étude expérimentale capteurs accélérométriques radio-synchronisés</p>
+        <p class="muted" lang-en>Experimental study of radio-synchronized accelerometers</p>
+      </article>
+
+      <article class="card-block" data-id="alphanov">
+        <h3 lang-fr>Stage R&D – ALPhANOV</h3>
+        <h3 lang-en>R&D Internship – ALPhANOV</h3>
+        <p>02/2024 – 07/2024 · Limoges</p>
+        <p class="muted" lang-fr>Banc optique motorisé · IHM Python / PyQt5</p>
+        <p class="muted" lang-en>Motorized optical bench · HMI Python / PyQt5</p>
+      </article>
+
+      <article class="card-block" data-id="tutor">
+        <h3 lang-fr>Tuteur – Univ. de Limoges</h3>
+        <h3 lang-en>Tutor – Univ. of Limoges</h3>
+        <p>09/2023 – 06/2024</p>
+        <p class="muted" lang-fr>Électricité (Kirchhoff, Thévenin/Norton), Optique géométrique</p>
+        <p class="muted" lang-en>Electricity (Kirchhoff, Thévenin/Norton), Geometric optics</p>
+      </article>
+
+      <article class="card-block" data-id="forum">
+        <h3 lang-fr>Relations Entreprises – Forum Ingénib</h3>
+        <h3 lang-en>Corporate Relations – Forum Ingénib</h3>
+        <p lang-fr>Depuis 05/2025</p>
+        <p lang-en>Since 05/2025</p>
+        <p class="muted" lang-fr>Coordination entreprises · Partenariats</p>
+        <p class="muted" lang-en>Company coordination · Partnerships</p>
+      </article>
+    </div>
+
+    <!-- Projets -->
+    <h2 class="section-title" lang-fr>Projets</h2>
+    <h2 class="section-title" lang-en>Projects</h2>
+    <div class="cards-grid">
+      <article class="card-block" data-id="fpga">
+        <h3>FPGA – ENSEIRB-MATMECA</h3>
+        <p class="muted" lang-fr>Générateur pseudo-aléatoire (1-49) · 7 segments</p>
+        <p class="muted" lang-en>Pseudo-random generator (1-49) · 7-segment display</p>
+      </article>
+
+      <article class="card-block" data-id="analog">
+        <h3 lang-fr>Projet analogique – ENSEIRB-MATMECA</h3>
+        <h3 lang-en>Analog project – ENSEIRB-MATMECA</h3>
+        <p class="muted" lang-fr>Amplificateur audio · PCB + tests</p>
+        <p class="muted" lang-en>Audio amplifier · PCB + tests</p>
+      </article>
+
+        <!-- 🆕 Projet vide 1 --><!-- 🆕 Projet vide 2 --><!-- 🆕 Projet vide 3 --><!-- 🆕 Carte vide 1 -->
+  <!-- 🆕 Carte ajoutée automatiquement --><!-- 🆕 Carte ajoutée automatiquement --></div>
+
+    <!-- Certifications -->
+    <h2 class="section-title" lang-fr>Certifications</h2>
+    <h2 class="section-title" lang-en>Certifications</h2>
+    <div class="cards-grid">
+      <article class="card-block" data-id="pyla">
+        <h3>PERL – PYLA</h3>
+        <p>02/2024</p>
+        <p class="muted" lang-fr>Validité 5 ans</p>
+        <p class="muted" lang-en>Valid 5 years</p>
+      </article>
+
+      <article class="card-block" data-id="arm">
+        <h3>Embedded Systems Essentials – ARM</h3>
+        <p>2022</p>
+        <p><a href="https://courses.edx.org/certificates/ee5463969f29434695b9c67d4e8060d3" target="_blank" rel="noreferrer">Cert.</a></p>
+      </article>
+
+      <article class="card-block" data-id="ibm">
+        <h3>Python Basics for Data Science – IBM</h3>
+        <p>2022</p>
+        <p><a href="https://courses.edx.org/certificates/b6f1e28e4bb74b48be05c20a7d3f3af8" target="_blank" rel="noreferrer">Cert.</a></p>
+      </article>
+
+      <article class="card-block" data-id="anfr">
+        <h3 lang-fr>Certificat Radioamateur – ANFR</h3>
+        <h3 lang-en>Radio Amateur Certificate – ANFR</h3>
+        <p>01/2025</p>
+        <p class="muted" lang-fr>Validité à vie</p>
+        <p class="muted" lang-en>Valid for life</p>
+      </article>
+    </div>
+
+    <!-- Bénévolat -->
+    <h2 class="section-title" lang-fr>Bénévolat</h2>
+    <h2 class="section-title" lang-en>Volunteering</h2>
+    <div class="cards-grid">
+      <article class="card-block" data-id="leo">
+        <h3 lang-fr>Leo Club Fès – Création de contenu</h3>
+        <h3 lang-en>Leo Club Fez – Digital content</h3>
+        <p>2020–2021</p>
+      </article>
+
+      <article class="card-block" data-id="esn">
+        <h3>ESN Bordeaux – Membre</h3>
+        <p>2025</p>
+        <p class="muted" lang-fr>Accueil & intégration étudiants internationaux</p>
+        <p class="muted" lang-en>Welcoming & integrating international students</p>
+      </article>
+    </div>
+
+    <!-- Compétences -->
+    <h2 class="section-title" lang-fr>Compétences</h2>
+    <h2 class="section-title" lang-en>Skills</h2>
+    <div class="cards-grid">
+      <article class="card-block" data-id="skills-it">
+        <h3 lang-fr>Informatique</h3>
+        <h3 lang-en>Computing</h3>
+        <p>Python · Matlab · ADS · PyQt5 · C · VSA · MS Office</p>
+      </article>
+
+      <article class="card-block" data-id="skills-elec">
+        <h3 lang-fr>Électronique</h3>
+        <h3 lang-en>Electronics</h3>
+        <p lang-fr>Circuits HF · Analogique · Numérique · Signal · Puissance</p>
+        <p lang-en>RF · Analog · Digital · Signal Processing · Power</p>
+      </article>
+
+      <article class="card-block" data-id="skills-lang">
+        <h3 lang-fr>Langues</h3>
+        <h3 lang-en>Languages</h3>
+        <p lang-fr>Arabe (natif) · Français (DALF C1) · Anglais (TOEIC 900/990)</p>
+        <p lang-en>Arabic (native) · French (DALF C1) · English (TOEIC 900/990)</p>
+      </article>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    © Marouane JORIO — <span lang-fr>Mis à jour en 2025</span><span lang-en>Updated in 2025</span>
+  </footer>
+
+  <!-- Modal (injected by JS) -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal__close" aria-label="Fermer / Close">&times;</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+<script>
+  /* ========= Lang Switch (persistance) ========= */
+  function applyLang(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[lang-fr]').forEach(el => el.hidden = (lang !== 'fr'));
+    document.querySelectorAll('[lang-en]').forEach(el => el.hidden = (lang !== 'en'));
+    document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    localStorage.setItem('preferredLang', lang);
+  }
+  document.getElementById('btn-fr').addEventListener('click', () => applyLang('fr'));
+  document.getElementById('btn-en').addEventListener('click', () => applyLang('en'));
+  applyLang(localStorage.getItem('preferredLang') || 'fr');
+
+  /* ========= Modal helpers ========= */
+  const modal = document.getElementById('modal');
+  const modalContent = document.getElementById('modal-content');
+  const closeBtn = modal.querySelector('.modal__close');
+
+  function openModal(innerHTML) {
+    modalContent.innerHTML = innerHTML;
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    modal.setAttribute('aria-hidden', 'true');
+    modalContent.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  /* ========= Card click -> content mapping ========= */
+  const detailsMap = {selva: `
+      <h3 id="modal-title" lang-fr>Détails du stage – SELVA SYSTEMS</h3>
+      <h3 id="modal-title" lang-en>Internship details – SELVA SYSTEMS</h3>
+      <p lang-fr><strong>Intitulé :</strong> Étude expérimentale de la synchronisation et des performances de capteurs accélérométriques dans un système embarqué radio-synchronisé pour l’analyse modale des structures.</p>
+      <p lang-en><strong>Topic:</strong> Experimental study of synchronization & performance of accelerometers in a radio-synchronized embedded system for structural modal analysis.</p>
       <ul lang-fr>
-        <li>Diplôme d’ingénieur en électronique – ENSEIRB-MATMECA, Bordeaux INP (2024–2027), Talence</li>
-        <li>Licence mention Physique – Université de Limoges (2021–2024), option Electronique des Hautes Fréquences et Photonique</li>
-        <li>Baccalauréat international option mathématiques – Établissement Secondaire Lazrak (09/2020 – 06/2021), Fès, Maroc</li>
+        <li>Driver bas niveau en C pour <strong>ADXL355</strong>, compatible <strong>ESP-IDF (ESP32)</strong>.</li>
+        <li>Driver open-source : <a href="https://github.com/Marouanejorio/adxl355" target="_blank" rel="noreferrer">GitHub</a></li>
+        <li>Mesures statiques (bruit) & dynamiques (réponse fréquentielle sur pot vibrant).</li>
+        <li>Montage : breakout <strong>ADXL355</strong> + <strong>BMI160</strong> (comparaisons).</li>
+        <li>Acquisition 140 Hz, enregistrement carte SD.</li>
+        <li>Script Python : écart-type, FFT, DSP (PSD), visualisation & interprétation.</li>
       </ul>
       <ul lang-en>
-        <li>Engineering Degree in Electronics – ENSEIRB-MATMECA, Bordeaux INP (2024–2027), Talence</li>
-        <li>Bachelor’s Degree in Physics – University of Limoges (2021–2024), specialization in High Frequency Electronics and Photonics</li>
-        <li>International Baccalaureate, Mathematics – Lazrak Secondary School (09/2020 – 06/2021), Fez, Morocco</li>
+        <li>Low-level C driver for <strong>ADXL355</strong>, <strong>ESP-IDF (ESP32)</strong> compatible.</li>
+        <li>Open-source driver: <a href="https://github.com/Marouanejorio/adxl355" target="_blank" rel="noreferrer">GitHub</a></li>
+        <li>Static (noise) & dynamic (frequency response with shaker) campaigns.</li>
+        <li>Setup: <strong>ADXL355</strong> breakout + <strong>BMI160</strong> for comparison.</li>
+        <li>140 Hz acquisition, SD card logging.</li>
+        <li>Python processing: std-dev, FFT, PSD, plots & interpretation.</li>
       </ul>
-    </section>
+      <div class="modal__assets">
+        <a class="btn" href="fichiers/selva_rapport.pdf" download>PDF</a>
+        <a class="btn" href="fichiers/selva_code.zip" download>Code (zip)</a>
+      </div>
+    `,
+    alphanov: `
+      <h3 id="modal-title" lang-fr>Stage R&D – ALPhANOV</h3>
+      <h3 id="modal-title" lang-en>R&D Internship – ALPhANOV</h3>
+      <ul lang-fr>
+        <li>Banc optique motorisé pour détection de défauts dans barreaux de fibres.</li>
+        <li>IHM Python / PyQt5 pour pilotage & visualisation.</li>
+      </ul>
+      <ul lang-en>
+        <li>Motorized optical bench for defect detection in fiber rods.</li>
+        <li>Python / PyQt5 HMI for control & visualization.</li>
+      </ul>
+    `,
+    tutor: `
+      <h3 id="modal-title" lang-fr>Tuteur – Université de Limoges</h3>
+      <h3 id="modal-title" lang-en>Tutor – University of Limoges</h3>
+      <p lang-fr>Électricité (lois de Kirchhoff, Thévenin/Norton, filtres) · Optique géométrique.</p>
+      <p lang-en>Electricity (Kirchhoff, Thévenin/Norton, filters) · Geometric optics.</p>
+    `,
+    forum: `
+      <h3 id="modal-title" lang-fr>Forum Ingénib – Relations Entreprises</h3>
+      <h3 id="modal-title" lang-en>Forum Ingénib – Corporate Relations</h3>
+      <p lang-fr>Coordination avec les entreprises · Développement de partenariats.</p>
+      <p lang-en>Company coordination · Partnership development.</p>
+    `,
+    fpga: `
+      <h3 id="modal-title">FPGA – ENSEIRB-MATMECA</h3>
+      <ul lang-fr>
+        <li>Générateur de nombres pseudo-aléatoires (1–49).</li>
+        <li>Affichage sur 7 segments · VHDL · Quartus.</li>
+        <li>Projet validé sur carte FPGA.</li>
+      </ul>
+      <ul lang-en>
+        <li>Pseudo-random number generator (1–49).</li>
+        <li>7-segment display · VHDL · Quartus.</li>
+        <li>Validated on FPGA board.</li>
+      </ul>
+      <div class="modal__assets">
+        <a class="btn" href="fichiers/fpga_code.vhdl" download>VHDL</a>
+        <a class="btn" href="fichiers/fpga_rapport.pdf" download>Report</a>
+      </div>
+    `,
+    analog: `
+      <h3 id="modal-title" lang-fr>Projet analogique – ENSEIRB-MATMECA</h3>
+      <h3 id="modal-title" lang-en>Analog project – ENSEIRB-MATMECA</h3>
+      <ul lang-fr>
+        <li>Amplificateur audio · Schéma, routage, soudure.</li>
+        <li>Validation par tests d’écoute & mesures.</li>
+      </ul>
+      <ul lang-en>
+        <li>Audio amplifier · Schematic, routing, soldering.</li>
+        <li>Validated with listening tests & measurements.</li>
+      </ul>
+      <div class="modal__assets">
+        <a class="btn" href="fichiers/analog_schéma.pdf" download>Schéma PCB</a>
+        <a class="btn" href="fichiers/analog_rapport.pdf" download>Rapport</a>
+      </div>
+    `,
+    eirb: `
+      <h3 id="modal-title">ENSEIRB-MATMECA – Électronique</h3>
+      <p lang-fr>Cycle ingénieur (2024–2027).</p>
+      <p lang-en>Engineering curriculum (2024–2027).</p>
+    `,
+    ulim: `
+      <h3 id="modal-title" lang-fr>Univ. de Limoges – Licence Physique</h3>
+      <h3 id="modal-title" lang-en>University of Limoges – BSc Physics</h3>
+      <p lang-fr>Option EHF & Photonique (2021–2024).</p>
+      <p lang-en>HF Electronics & Photonics (2021–2024).</p>
+    `,
+    bac: `
+      <h3 id="modal-title" lang-fr>IB – Établissement Secondaire Lazrak</h3>
+      <h3 id="modal-title" lang-en>IB – Lazrak Secondary School</h3>
+      <p>09/2020 – 06/2021 · Fès / Fez.</p>
+    `,
+    pyla: `
+      <h3 id="modal-title">PERL – PYLA</h3>
+      <p lang-fr>Personne Exposée aux Risques Laser (02/2024) · Validité 5 ans.</p>
+      <p lang-en>Laser Risk Exposure (02/2024) · Valid 5 years.</p>
+    `,
+    arm: `
+      <h3 id="modal-title">Embedded Systems Essentials – ARM</h3>
+      <p>2022</p>
+      <a class="btn" href="https://courses.edx.org/certificates/ee5463969f29434695b9c67d4e8060d3" target="_blank" rel="noreferrer">Voir / View Certificate</a>
+    `,
+    ibm: `
+      <h3 id="modal-title">Python Basics for Data Science – IBM</h3>
+      <p>2022</p>
+      <a class="btn" href="https://courses.edx.org/certificates/b6f1e28e4bb74b48be05c20a7d3f3af8" target="_blank" rel="noreferrer">Voir / View Certificate</a>
+    `,
+    anfr: `
+      <h3 id="modal-title" lang-fr>Certificat Radioamateur – ANFR</h3>
+      <h3 id="modal-title" lang-en>Radio Amateur Certificate – ANFR</h3>
+      <p lang-fr>01/2025 · Validité à vie.</p>
+      <p lang-en>01/2025 · Valid for life.</p>
+    `,
+    leo: `
+      <h3 id="modal-title" lang-fr>Leo Club Fès – Création de contenu</h3>
+      <h3 id="modal-title" lang-en>Leo Club Fez – Digital content</h3>
+      <p lang-fr>Supports digitaux pour actions sociales & éducatives (2020–2021).</p>
+      <p lang-en>Digital materials for social & educational actions (2020–2021).</p>
+    `,
+    esn: `
+      <h3 id="modal-title">ESN Bordeaux – Membre</h3>
+      <p lang-fr>Accueil & intégration d’étudiants internationaux (2025).</p>
+      <p lang-en>Welcoming & integrating international students (2025).</p>
+    `,
+    "skills-it": `
+      <h3 id="modal-title" lang-fr>Informatique</h3>
+      <h3 id="modal-title" lang-en>Computing</h3>
+      <p>Python · Matlab · ADS · PyQt5 · C · VSA · Microsoft Office</p>
+    `,
+    "skills-elec": `
+      <h3 id="modal-title" lang-fr>Électronique</h3>
+      <h3 id="modal-title" lang-en>Electronics</h3>
+      <p lang-fr>Circuits HF · Analogique · Numérique · Traitement du signal · Puissance</p>
+      <p lang-en>RF · Analog · Digital · Signal Processing · Power</p>
+    `,
+    "skills-lang": `
+      <h3 id="modal-title" lang-fr>Langues</h3>
+      <h3 id="modal-title" lang-en>Languages</h3>
+      <p lang-fr>Arabe (natif) · Français (DALF C1) · Anglais (TOEIC 900/990)</p>
+      <p lang-en>Arabic (native) · French (DALF C1) · English (TOEIC 900/990)</p>
+    `
+  };
 
-
-
-<section>
-  <h2 lang-fr>Projets</h2>
-  <h2 lang-en>Projects</h2>
-
-  <div class="certifications" lang-fr>
-    <div class="cert-block">
-      <div class="cert-text">
-        <strong>FPGA<br>ENSEIRB-MATMECA</strong>
-        <ul>
-          <li>Générateur de nombres pseudo-aléatoires (1 à 49)</li>
-          <li>Affichage sur afficheur 7 segments</li>
-          <li>Modélisation en VHDL et validation sur carte FPGA</li>
-        </ul>
-      </div>
-    </div>
-    <div class="cert-block">
-      <div class="cert-text">
-        <strong>Projet analogique<br>ENSEIRB-MATMECA</strong>
-        <ul>
-          <li>Conception et réalisation d’un PCB pour un amplificateur audio</li>
-          <li>Schématisation, routage, soudure des composants</li>
-          <li>Validation par tests audio</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="certifications" lang-en>
-    <div class="cert-block">
-      <div class="cert-text">
-        <strong>FPGA<br>ENSEIRB-MATMECA</strong>
-        <ul>
-          <li>Pseudo-random number generator (1 to 49)</li>
-          <li>Display using 7-segment display</li>
-          <li>VHDL modeling and validation on FPGA board</li>
-        </ul>
-      </div>
-    </div>
-    <div class="cert-block">
-      <div class="cert-text">
-        <strong>Analog Project<br>ENSEIRB-MATMECA</strong>
-        <ul>
-          <li>Design and creation of a PCB for an audio amplifier</li>
-          <li>Schematic, routing, soldering</li>
-          <li>Audio testing and validation</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section>
-  <h2 lang-fr>Certifications</h2>
-  <h2 lang-en>Certifications</h2>
-
-  <div class="certifications" lang-fr>
-    <div class="cert-block">
-      <div class="cert-logo">
-        <img src="https://www.alphanov.com/sites/default/files/2025-03/Logo_EN_Baseline_Pyla.png" alt="Logo PYLA">
-      </div>
-      <div class="cert-text">
-        Personne Exposée aux Risques Laser (PERL)<br>
-        PYLA (02/2024)<br>
-        Validité : 5 ans
-      </div>
-    </div>
-    <div class="cert-block">
-      <div class="cert-logo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Arm_logo_2025.svg/500px-Arm_logo_2025.svg.png" alt="ARM">
-      </div>
-      <div class="cert-text">
-        Embedded Systems Essentials with ARM<br>
-        ArmEducationX (2022)<br>
-        <a href="https://courses.edx.org/certificates/ee5463969f29434695b9c67d4e8060d3">Voir certificat</a>
-      </div>
-    </div>
-    <div class="cert-block">
-      <div class="cert-logo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/120px-IBM_logo.svg.png" alt="IBM">
-      </div>
-      <div class="cert-text">
-        Python Basics for Data Science<br>
-        IBM (2022)<br>
-        <a href="https://courses.edx.org/certificates/b6f1e28e4bb74b48be05c20a7d3f3af8">Voir certificat</a>
-      </div>
-    </div>
-    <div class="cert-block">
-      <div class="cert-logo">
-        <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/b/b5/AFNR_Logo.svg/266px-AFNR_Logo.svg.png?20210711194337" alt="ANFR">
-      </div>
-      <div class="cert-text">
-        Certificat Radioamateur<br>
-        ANFR (01/2025)<br>
-        Validité : à vie
-      </div>
-    </div>
-  </div>
-
-  <div class="certifications" lang-en>
-    <div class="cert-block">
-      <div class="cert-logo">
-        <img src="https://www.alphanov.com/sites/default/files/2025-03/Logo_EN_Baseline_Pyla.png" alt="PYLA Logo">
-      </div>
-      <div class="cert-text">
-        Laser Risk Exposure Certification (PERL)<br>
-        PYLA (02/2024)<br>
-        Valid for 5 years
-      </div>
-    </div>
-    <div class="cert-block">
-      <div class="cert-logo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Arm_logo_2025.svg/500px-Arm_logo_2025.svg.png" alt="ARM">
-      </div>
-      <div class="cert-text">
-        Embedded Systems Essentials with ARM<br>
-        ArmEducationX (2022)<br>
-        <a href="https://courses.edx.org/certificates/ee5463969f29434695b9c67d4e8060d3">View certificate</a>
-      </div>
-    </div>
-    <div class="cert-block">
-      <div class="cert-logo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/120px-IBM_logo.svg.png" alt="IBM">
-      </div>
-      <div class="cert-text">
-        Python Basics for Data Science<br>
-        IBM (2022)<br>
-        <a href="https://courses.edx.org/certificates/b6f1e28e4bb74b48be05c20a7d3f3af8">View certificate</a>
-      </div>
-    </div>
-    <div class="cert-block">
-      <div class="cert-logo">
-        <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/b/b5/AFNR_Logo.svg/266px-AFNR_Logo.svg.png?20210711194337" alt="ANFR">
-      </div>
-      <div class="cert-text">
-        Radio Amateur Certificate<br>
-        ANFR (01/2025)<br>
-        Valid for life
-      </div>
-    </div>
-  </div>
-</section>
-
-
-    <section>
-      <h2 lang-fr>Bénévolat</h2>
-      <h2 lang-en>Volunteering</h2>
-      <div class="job" lang-fr>
-        <p>Chargé de création de contenu numérique – Leo Club Fès (2020–2021)</p>
-        <ul>
-          <li>Production de supports digitaux pour les activités sociales et éducatives</li>
-          <li>Communication affiliée au Lions Club International</li>
-        </ul>
-      </div>
-      <div class="job" lang-en>
-        <p>Digital Content Creator – Leo Club Fez (2020–2021)</p>
-        <ul>
-          <li>Produced digital materials for social and educational activities</li>
-          <li>Communicated in coordination with Lions Club International</li>
-        </ul>
-      </div>
-      <div class="job" lang-fr>
-        <p>Membre – Erasmus Student Network (ESN), Bordeaux (2025)</p>
-        <ul>
-          <li>Participation aux activités d’accueil et d’intégration des étudiants internationaux</li>
-          <li>Engagement dans des projets interculturels et associatifs</li>
-        </ul>
-      </div>
-      <div class="job" lang-en>
-        <p>Member – Erasmus Student Network (ESN), Bordeaux (2025)</p>
-        <ul>
-          <li>Participated in welcome and integration activities for international students</li>
-          <li>Involved in intercultural and community-based projects</li>
-        </ul>
-      </div>
-    </section>
-
-    <section>
-      <h2 lang-fr>Compétences</h2>
-      <h2 lang-en>Skills</h2>
-      <p lang-fr><strong>Informatique :</strong></p>
-      <p lang-en><strong>Computing:</strong></p>
-      <div lang-fr>
-        <span class="badge">Python</span>
-        <span class="badge">VSA</span>
-        <span class="badge">Matlab</span>
-        <span class="badge">ADS</span>
-        <span class="badge">PyQt5</span>
-        <span class="badge">Langage C</span>
-        <span class="badge">Microsoft Office</span>
-      </div>
-      <div lang-en>
-        <span class="badge">Python</span>
-        <span class="badge">VSA</span>
-        <span class="badge">Matlab</span>
-        <span class="badge">ADS</span>
-        <span class="badge">PyQt5</span>
-        <span class="badge">C Language</span>
-        <span class="badge">Microsoft Office</span>
-      </div>
-      <p lang-fr><strong>Électronique :</strong></p>
-      <p lang-en><strong>Electronics:</strong></p>
-      <div lang-fr>
-        <span class="badge">Circuits HF</span>
-        <span class="badge">Électronique Analogique</span>
-        <span class="badge">Électronique Numérique</span>
-        <span class="badge">Traitement du signal</span>
-        <span class="badge">Électronique de puissance</span>
-      </div>
-      <div lang-en>
-        <span class="badge">RF Circuits</span>
-        <span class="badge">Analog Electronics</span>
-        <span class="badge">Digital Electronics</span>
-        <span class="badge">Signal Processing</span>
-        <span class="badge">Power Electronics</span>
-      </div>
-    </section>
-
-    <section>
-      <h2 lang-fr>Langues</h2>
-      <h2 lang-en>Languages</h2>
-      <div lang-fr>
-        <span class="badge">Arabe (langue natale)</span>
-        <span class="badge">Français (DALF C1)</span>
-        <span class="badge">Anglais (TOEIC 900/990)</span>
-      </div>
-      <div lang-en>
-        <span class="badge">Arabic (native)</span>
-        <span class="badge">French (DALF C1)</span>
-        <span class="badge">English (TOEIC 900/990)</span>
-      </div>
-    </section>
-
-    <section>
-      <h2 lang-fr>Centres d'intérêt & personnalité</h2>
-      <h2 lang-en>Interests & Personality</h2>
-      <p lang-fr>Retouche photo, Voyages, Basketball, Ping-pong</p>
-      <p lang-en>Photo editing, Travel, Basketball, Table tennis</p>
-      <p lang-fr>Organisation, Communication, Travail en équipe</p>
-      <p lang-en>Organization, Communication, Teamwork</p>
-    </section>
-
-      </div>
-
-      <div class="footer">
-        © Marouane JORIO – Mis à jour en 2025 
-      </div>
+  // Bind all cards
+  document.querySelectorAll('.card-block').forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.dataset.id;
+      const html = detailsMap[id] || `
+        <h3 id="modal-title">Détails</h3>
+        <p lang-fr>Contenu à venir.</p>
+        <p lang-en>Details coming soon.</p>
+      `;
+      openModal(html);
+      // re-apply language inside modal
+      applyLang(document.documentElement.lang || 'fr');
+    });
+  });
+</script>
 </body>
 </html>
