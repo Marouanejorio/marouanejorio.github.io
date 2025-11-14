@@ -1,411 +1,629 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype html>
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Marouane JORIO - CV</title>
+  <title>Marouane JORIO – Portfolio</title>
+  <meta name="description" content="Bilingual portfolio (EN/FR) of Marouane JORIO — embedded systems, FPGA, signal processing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'] },
+          colors: { emerald: { DEFAULT: '#10b981' } }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: light dark; }
+    body { font-feature-settings: 'cv02','cv03','cv04','cv09','ss01'; }
+    .card { @apply rounded-2xl border p-5 shadow-sm transition-transform duration-300 will-change-transform; }
+    .pill { @apply inline-flex items-center rounded-full border px-3 py-1 text-sm; }
+    .icon { width: 1.25rem; height: 1.25rem; }
+    .fade-in { opacity: 0; transform: translateY(8px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.show { opacity: 1; transform: translateY(0); }
+    a.btn { @apply inline-flex items-center gap-2 rounded-xl border px-4 py-2 hover:shadow-sm transition; }
+    .nav-link { @apply text-sm hover:underline; }
+    .lang-toggle, .theme-toggle { @apply rounded-xl border px-3 py-1 text-sm; }
+    .logo-badge { @apply flex items-center justify-center w-9 h-9 rounded-xl border font-extrabold; }
+  
+/* --- Glassmorphism & Effects --- */
+body {
+  background: linear-gradient(135deg, #eef8ff 0%, #ecfff5 50%, #ffffff 100%);
+}
+.dark body {
+  background: linear-gradient(135deg, #0b0f12 0%, #0e1512 50%, #0a0a0a 100%);
+}
+.glass-section {
+  background: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 24px;
+  padding: 24px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+  transition: backdrop-filter .4s ease, background-color .4s ease, box-shadow .3s ease, transform .3s ease;
+}
+.dark .glass-section {
+  background: rgba(17,24,39,0.45);
+  border-color: rgba(255,255,255,0.12);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+}
 
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+/* Hover glow */
 
-  <link rel="stylesheet" href="style.css" />
+
+
+</style>
 </head>
-
-<body>
-  <!-- Lang toggle -->
-  <div class="lang-toggle">
-    <button id="btn-fr" class="active">FR</button>
-    <button id="btn-en">EN</button>
-  </div>
-
-  <!-- Header -->
-  <header class="site-header">
-    <h1>Marouane JORIO</h1>
-    <p class="subtitle" lang-fr>Élève ingénieur en électronique – Bordeaux, France · Permis B</p>
-    <p class="subtitle" lang-en>Electronics Engineering Student – Bordeaux, France · Driving License B</p>
-    <div class="contact-icons">
-      <a href="mailto:jorio.marouane@gmail.com" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
-      <a href="tel:+33673829662" aria-label="Téléphone"><i class="fas fa-phone"></i></a>
-      <a href="https://www.linkedin.com/in/marouane-jorio-255a8821b/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/marouanejorio" target="_blank" rel="noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-    </div>
+<body class="bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100 font-sans">
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-neutral-950/70 border-b border-neutral-200 dark:border-neutral-800">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+      <!-- Left: Logo MJ + brand -->
+      <a href="#top" class="flex items-center gap-3 group">
+        <span class="logo-badge border-emerald-500 text-emerald-600 dark:text-emerald-400 dark:border-emerald-400 group-hover:shadow-sm">MJ</span>
+      </a>
+      <!-- Center: links -->
+      <div class="hidden gap-6 md:flex">
+        <a data-i18n="nav_about" href="#about" class="nav-link">About</a>
+        <a data-i18n="nav_experience" href="#experience" class="nav-link">Experience</a>
+        <a data-i18n="nav_projects" href="#projects" class="nav-link">Projects</a>
+        <a data-i18n="nav_skills" href="#skills" class="nav-link">Skills</a>
+        <a data-i18n="nav_education" href="#education" class="nav-link">Education</a>
+        <a data-i18n="nav_certifs" href="#certifications" class="nav-link">Certifications</a>
+        <a data-i18n="nav_volunteering" href="#volunteering" class="nav-link">Volunteering</a>
+        
+      </div>
+      <!-- Right: toggles + social -->
+      <div class="flex items-center gap-2">
+        <button id="langBtn" class="lang-toggle" aria-label="Toggle language">EN</button>
+        <button id="themeBtn" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <a href="https://github.com/Marouanejorio" target="_blank" aria-label="GitHub" class="p-2 rounded-xl border border-neutral-200 dark:border-neutral-800">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.48v-1.7c-2.78.62-3.37-1.38-3.37-1.38-.45-1.18-1.12-1.5-1.12-1.5-.92-.65.07-.64.07-.64 1.02.07 1.55 1.06 1.55 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.1 0-1.13.39-2.06 1.03-2.78-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.06.8-.23 1.65-.35 2.5-.35s1.7.12 2.5.35c1.9-1.33 2.74-1.06 2.74-1.06.55 1.4.2 2.44.1 2.7.64.72 1.02 1.65 1.02 2.78 0 3.97-2.34 4.83-4.57 5.08.36.32.68.94.68 1.9v2.82c0 .27.18.59.69.49A10.04 10.04 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/marouane-jorio-255a8821b" target="_blank" aria-label="LinkedIn" class="p-2 rounded-xl border border-neutral-200 dark:border-neutral-800">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.63c0-1.34-.02-3.05-1.86-3.05-1.86 0-2.15 1.45-2.15 2.95v5.73H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.86 3.37-1.86 3.61 0 4.28 2.38 4.28 5.47v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.55V9h3.57v11.45Z"/></svg>
+        </a>
+      </div>
+    </nav>
   </header>
 
-  <main class="container">
+  <!-- HERO / ABOUT -->
+  <main id="top" class="mx-auto max-w-6xl px-4 py-10">
+    <section id="about" class="scroll-mt-24 glass-section">
+      <div class="grid items-center gap-8 lg:grid-cols-[1.2fr,0.8fr]">
+        <div class="fade-in">
+          <!-- Profile row: image left of name -->
+          <div class="flex items-center gap-4">
+            <img src="profile.jpg" alt="Profile photo of Marouane JORIO" class="rounded-full border border-neutral-200 dark:border-neutral-800 shadow-lg ring-1 ring-emerald-500/10 object-cover" style="width:150px;height:150px" onerror="this.style.display='none'">
+            <h1 class="text-4xl font-bold tracking-tight">Marouane JORIO</h1>
+          </div>
+          <p data-i18n="tagline" class="mt-3 text-lg text-neutral-700 dark:text-neutral-300">
+            Electronics engineering student at ENSEIRB‑MATMECA — focused on embedded systems, FPGA design, and signal processing.
+          </p>
+          <p data-i18n="availability" class="mt-2 text-sm text-emerald-700 dark:text-emerald-400 font-medium">
+            Seeking a 3–4 month internship starting June 2026 (digital electronics / embedded systems)
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="mailto:jorio.marouane@gmail.com" class="btn">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+              <span>jorio.marouane@gmail.com</span>
+            </a>
+            <a href="tel:+33673829662" class="btn">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.77.66 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.19a2 2 0 0 1 2.11-.45c.83.32 1.7.54 2.6.66A2 2 0 0 1 22 16.92Z"/></svg>
+              <span>+33 6 73 82 96 62</span>
+            </a>
+            <a href="https://github.com/Marouanejorio" target="_blank" class="btn">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.48v-1.7c-2.78.62-3.37-1.38-3.37-1.38-.45-1.18-1.12-1.5-1.12-1.5-.92-.65.07-.64.07-.64 1.02.07 1.55 1.06 1.55 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.1 0-1.13.39-2.06 1.03-2.78-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.06.8-.23 1.65-.35 2.5-.35s1.7.12 2.5.35c1.9-1.33 2.74-1.06 2.74-1.06.55 1.4.2 2.44.1 2.7.64.72 1.02 1.65 1.02 2.78 0 3.97-2.34 4.83-4.57 5.08.36.32.68.94.68 1.9v2.82c0 .27.18.59.69.49A10.04 10.04 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/></svg>
+              <span>GitHub</span>
+            </a>
+            <a href="https://linkedin.com/in/marouane-jorio-255a8821b" target="_blank" class="btn">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.63c0-1.34-.02-3.05-1.86-3.05-1.86 0-2.15 1.45-2.15 2.95v5.73H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.86 3.37-1.86 3.61 0 4.28 2.38 4.28 5.47v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.55V9h3.57v11.45Z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+            <a id="cvBtn" href="./cv_marouane_jorio_oct2025 (8).pdf" class="btn" download>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              <span data-i18n="download_cv">Download CV</span>
+            </a>
+          </div>
+          <div class="mt-4 flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Talence, France</span>
+          </div>
+        </div>
+        <div class="card bg-neutral-50 dark:bg-neutral-900/40 fade-in">
+          <div class="flex items-start gap-3">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <div>
+              <p data-i18n="currently" class="font-medium">Currently</p>
+              <p data-i18n="availability_full" class="text-sm text-neutral-700 dark:text-neutral-300">
+                Seeking a 3–4 month internship starting June 2026 (digital electronics / embedded systems)
+              </p>
+            </div>
+          </div>
+          <p data-i18n="about_blurb" class="mt-4 text-sm text-neutral-600 dark:text-neutral-400">
+            This portfolio highlights hands‑on work in FPGA, embedded systems, and instrumentation — with select projects and internships below.
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <!-- Formation -->
-    <h2 class="section-title" lang-fr>Formation</h2>
-    <h2 class="section-title" lang-en>Education</h2>
-    <div class="cards-grid">
-      <article class="card-block" data-id="eirb">
-        <h3 lang-fr>Diplôme d’ingénieur – ENSEIRB-MATMECA</h3>
-        <h3 lang-en>Engineering Degree – ENSEIRB-MATMECA</h3>
-        <p lang-fr>2024–2027 · Talence</p>
-        <p lang-en>2024–2027 · Talence</p>
-      </article>
+    <!-- EXPERIENCE -->
+    <section id="experience" class="scroll-mt-24 mt-14 glass-section">
+      <div class="flex items-center gap-3 mb-6 fade-in">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        <h2 data-i18n="experience_title" class="text-2xl font-semibold tracking-tight">Experience</h2>
+      </div>
+      <div class="grid gap-4">
+        <div class="card fade-in">
+          <h3 class="text-lg font-semibold"><span data-i18n="exp1_role">Corporate Relations Manager</span> · FORUM INGENIB</h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 flex items-center gap-2">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <span data-i18n="exp1_time">Apr 2025 – Present · Talence, France</span>
+          </p>
+          <ul class="mt-3 list-disc pl-6 text-sm text-neutral-800 dark:text-neutral-200 space-y-1">
+            <li data-i18n="exp1_b1">Managed company partnerships and event logistics; led a small team coordinating the industry forum.</li>
+          </ul>
+        </div>
+        <div class="card fade-in">
+          <h3 class="text-lg font-semibold"><span data-i18n="exp2_role">R&D Intern</span> · SELVA SYSTEMS</h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 flex items-center gap-2">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <span data-i18n="exp2_time">Jun 2025 (1 month) · Limoges, France</span>
+          </p>
+          <ul class="mt-3 list-disc pl-6 text-sm text-neutral-800 dark:text-neutral-200 space-y-1">
+            <li data-i18n="exp2_b1">Developed a low‑level driver in C (ESP32, ESP‑IDF) for the ADXL355 accelerometer — open‑source on GitHub.</li>
+            <li data-i18n="exp2_b2">Sensor measurement & synchronization (ADXL355, BMI160), FFT computation and frequency‑domain analysis.</li>
+          </ul>
+        </div>
+        <div class="card fade-in">
+          <h3 class="text-lg font-semibold"><span data-i18n="exp3_role">R&D Intern</span> · ALPHANOV</h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 flex items-center gap-2">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <span data-i18n="exp3_time">Feb 2024 – Jul 2024 (6 months) · Limoges, France</span>
+          </p>
+          <ul class="mt-3 list-disc pl-6 text-sm text-neutral-800 dark:text-neutral-200 space-y-1">
+            <li data-i18n="exp3_b1">Designed and assembled a motorized optical bench for defect detection in optical fiber rods.</li>
+            <li data-i18n="exp3_b2">Developed a Python GUI (PyQt5) for motor control, data acquisition (image processing), and real‑time visualization.</li>
+          </ul>
+        </div>
+        <div class="card fade-in">
+          <h3 class="text-lg font-semibold"><span data-i18n="exp4_role">Academic Tutor</span> · University of Limoges</h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 flex items-center gap-2">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <span data-i18n="exp4_time">Sept 2023 – Jun 2024 · Limoges, France</span>
+          </p>
+          <ul class="mt-3 list-disc pl-6 text-sm text-neutral-800 dark:text-neutral-200 space-y-1">
+            <li data-i18n="exp4_b1">Provided academic support to first‑year physics students (L1) in Electricity and Geometrical Optics.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-      <article class="card-block" data-id="ulim">
-        <h3 lang-fr>Licence Physique – Univ. de Limoges</h3>
-        <h3 lang-en>Bachelor’s in Physics – Univ. of Limoges</h3>
-        <p lang-fr>2021–2024 · EHF & Photonique</p>
-        <p lang-en>2021–2024 · High-Frequency & Photonics</p>
-      </article>
+    <!-- PROJECTS -->
+<section id="projects" class="scroll-mt-24 mt-14 glass-section">
+<div class="flex items-center gap-3 mb-6 fade-in">
+<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+<h2 data-i18n="projects_title" class="text-2xl font-semibold tracking-tight">Projects</h2>
+</div>
 
-      <article class="card-block" data-id="bac">
-        <h3 lang-fr>Baccalauréat international – Lazrak</h3>
-        <h3 lang-en>International Baccalaureate – Lazrak</h3>
-        <p lang-fr>09/2020 – 06/2021 · Fès</p>
-        <p lang-en>09/2020 – 06/2021 · Fez</p>
-      </article>
-      <!-- 🆕 Carte vide 1 --></div>
 
-    <!-- Expérience -->
-    <h2 class="section-title" lang-fr>Expérience</h2>
-    <h2 class="section-title" lang-en>Experience</h2>
-    <div class="cards-grid">
-      <article class="card-block" data-id="selva">
-        <h3 lang-fr>Stage R&D – SELVA SYSTEMS</h3>
-        <h3 lang-en>R&D Internship – SELVA SYSTEMS</h3>
-        <p lang-fr>06/2025 – 07/2025 · Limoges</p>
-        <p lang-en>06/2025 – 07/2025 · Limoges</p>
-        <p class="muted" lang-fr>Étude expérimentale capteurs accélérométriques radio-synchronisés</p>
-        <p class="muted" lang-en>Experimental study of radio-synchronized accelerometers</p>
-      </article>
+<div class="grid gap-6 md:grid-cols-2">
 
-      <article class="card-block" data-id="alphanov">
-        <h3 lang-fr>Stage R&D – ALPhANOV</h3>
-        <h3 lang-en>R&D Internship – ALPhANOV</h3>
-        <p>02/2024 – 07/2024 · Limoges</p>
-        <p class="muted" lang-fr>Banc optique motorisé · IHM Python / PyQt5</p>
-        <p class="muted" lang-en>Motorized optical bench · HMI Python / PyQt5</p>
-      </article>
 
-      <article class="card-block" data-id="tutor">
-        <h3 lang-fr>Tuteur – Univ. de Limoges</h3>
-        <h3 lang-en>Tutor – Univ. of Limoges</h3>
-        <p>09/2023 – 06/2024</p>
-        <p class="muted" lang-fr>Électricité (Kirchhoff, Thévenin/Norton), Optique géométrique</p>
-        <p class="muted" lang-en>Electricity (Kirchhoff, Thévenin/Norton), Geometric optics</p>
-      </article>
+<!-- PROJECT 1 - FPGA -->
+<div class="glass-section fade-in">
+<h3 data-i18n="prj1_title" class="text-lg font-semibold">FPGA Design Projects (NEXYS‑A7, VHDL)</h3>
+<img src="fpga_project.jpg" alt="FPGA project preview" class="mt-3 w-full rounded-xl border border-neutral-200 dark:border-neutral-800 object-cover" onerror="this.style.display='none'">
+<ul class="mt-3 list-disc pl-6 text-sm text-neutral-800 dark:text-neutral-200 space-y-1">
+<li data-i18n="prj1_b1">LFSR‑based Pseudo‑Random Number Generator (Bingo) with 7‑segment output</li>
+<li data-i18n="prj1_b2">Embedded MP3 player: FSM + synchronous counters for multiplexed 7‑segment control</li>
+<li data-i18n="prj1_b3">Automotive dashboard: real‑time display of speed, RPM, and indicators</li>
+</ul>
+<p class="mt-3 text-sm text-neutral-700 dark:text-neutral-300"><strong>Main skills:</strong> Vivado, Xilinx Artix‑7, VHDL</p>
+</div>
 
-      <article class="card-block" data-id="forum">
-        <h3 lang-fr>Relations Entreprises – Forum Ingénib</h3>
-        <h3 lang-en>Corporate Relations – Forum Ingénib</h3>
-        <p lang-fr>Depuis 05/2025</p>
-        <p lang-en>Since 05/2025</p>
-        <p class="muted" lang-fr>Coordination entreprises · Partenariats</p>
-        <p class="muted" lang-en>Company coordination · Partnerships</p>
-      </article>
-    </div>
 
-    <!-- Projets -->
-    <h2 class="section-title" lang-fr>Projets</h2>
-    <h2 class="section-title" lang-en>Projects</h2>
-    <div class="cards-grid">
-      <article class="card-block" data-id="fpga">
-        <h3>FPGA – ENSEIRB-MATMECA</h3>
-        <p class="muted" lang-fr>Générateur pseudo-aléatoire (1-49) · 7 segments</p>
-        <p class="muted" lang-en>Pseudo-random generator (1-49) · 7-segment display</p>
-      </article>
+<!-- PROJECT 2 - PICDEM2+ CLOCK -->
+<div class="glass-section fade-in">
+<h3 data-i18n="prj2_title" class="text-lg font-semibold">Configurable Digital Clock on PICDEM2+</h3>
+<img src="pic_clock.jpg" alt="PICDEM2+ digital clock" class="mt-3 w-full rounded-xl border border-neutral-200 dark:border-neutral-800 object-cover" onerror="this.style.display='none'">
+<ul class="mt-3 list-disc pl-6 text-sm text-neutral-800 dark:text-neutral-200 space-y-1">
+<li data-i18n="prj2_b1">Programmed PIC16F877A for time setting and counting</li>
+<li data-i18n="prj2_b2">Developed in C using MPLAB IDE</li>
+</ul>
+<p class="mt-3 text-sm text-neutral-700 dark:text-neutral-300"><strong>Main skills:</strong> PIC16F877A, MPLAB IDE, C</p>
+</div>
 
-      <article class="card-block" data-id="analog">
-        <h3 lang-fr>Projet analogique – ENSEIRB-MATMECA</h3>
-        <h3 lang-en>Analog project – ENSEIRB-MATMECA</h3>
-        <p class="muted" lang-fr>Amplificateur audio · PCB + tests</p>
-        <p class="muted" lang-en>Audio amplifier · PCB + tests</p>
-      </article>
 
-        <!-- 🆕 Projet vide 1 --><!-- 🆕 Projet vide 2 --><!-- 🆕 Projet vide 3 --><!-- 🆕 Carte vide 1 -->
-  <!-- 🆕 Carte ajoutée automatiquement --><!-- 🆕 Carte ajoutée automatiquement --></div>
+<!-- PROJECT 3 - ADXL355 DRIVER -->
+<div class="glass-section fade-in md:col-span-2">
+<div class="flex items-center justify-between">
+<h3 data-i18n="prj3_title" class="text-lg font-semibold">ADXL355 ESP32 Driver (Open‑Source)</h3>
+<a href="https://github.com/Marouanejorio" target="_blank" class="text-sm underline">View</a>
+</div>
+<img src="adxl355_driver.jpg" alt="ADXL355 project" class="mt-3 w-full rounded-xl border border-neutral-200 dark:border-neutral-800 object-cover" onerror="this.style.display='none'">
+<ul class="mt-3 list-disc pl-6 text-sm text-neutral-800 dark:text-neutral-200 space-y-1">
+<li data-i18n="prj3_b1">Low‑level SPI driver in C for ADXL355 using ESP‑IDF</li>
+<li data-i18n="prj3_b2">Sensor synchronization + FFT analysis tools</li>
+</ul>
+<p class="mt-3 text-sm text-neutral-700 dark:text-neutral-300"><strong>Main skills:</strong> ESP‑IDF, ESP32, Python, C</p>
+</div>
 
-    <!-- Certifications -->
-    <h2 class="section-title" lang-fr>Certifications</h2>
-    <h2 class="section-title" lang-en>Certifications</h2>
-    <div class="cards-grid">
-      <article class="card-block" data-id="pyla">
-        <h3>PERL – PYLA</h3>
-        <p>02/2024</p>
-        <p class="muted" lang-fr>Validité 5 ans</p>
-        <p class="muted" lang-en>Valid 5 years</p>
-      </article>
 
-      <article class="card-block" data-id="arm">
-        <h3>Embedded Systems Essentials – ARM</h3>
-        <p>2022</p>
-        <p><a href="https://courses.edx.org/certificates/ee5463969f29434695b9c67d4e8060d3" target="_blank" rel="noreferrer">Cert.</a></p>
-      </article>
+<!-- PROJECT 4 - SPECTRAL ANALYSIS -->
+<div class="glass-section fade-in md:col-span-2">
+<h3 class="text-lg font-semibold">Spectral Analysis Project — 4‑Lab Practical Series</h3>
+<ul class="mt-3 list-disc pl-6 text-sm text-neutral-800 dark:text-neutral-200 space-y-1">
+<li>Study of analog and digital signals using Keysight 3014A oscilloscope and Keysight 89600 VSA.</li>
+<li>Sampling, FFT analysis, aliasing reduction, windowing, autocorrelation, noise measurement.</li>
+<li>Analysis of sine waves, square waves, transient pulses, white noise; measurement of spectra & power.</li>
+</ul>
+<p class="mt-3 text-sm text-neutral-700 dark:text-neutral-300"><strong>Main skills:</strong> DSP, high‑frequency acquisition, PSD computation, SNR optimization, instrument configuration.</p>
+</div>
 
-      <article class="card-block" data-id="ibm">
-        <h3>Python Basics for Data Science – IBM</h3>
-        <p>2022</p>
-        <p><a href="https://courses.edx.org/certificates/b6f1e28e4bb74b48be05c20a7d3f3af8" target="_blank" rel="noreferrer">Cert.</a></p>
-      </article>
 
-      <article class="card-block" data-id="anfr">
-        <h3 lang-fr>Certificat Radioamateur – ANFR</h3>
-        <h3 lang-en>Radio Amateur Certificate – ANFR</h3>
-        <p>01/2025</p>
-        <p class="muted" lang-fr>Validité à vie</p>
-        <p class="muted" lang-en>Valid for life</p>
-      </article>
-    </div>
+</div>
+</section>
 
-    <!-- Bénévolat -->
-    <h2 class="section-title" lang-fr>Bénévolat</h2>
-    <h2 class="section-title" lang-en>Volunteering</h2>
-    <div class="cards-grid">
-      <article class="card-block" data-id="leo">
-        <h3 lang-fr>Leo Club Fès – Création de contenu</h3>
-        <h3 lang-en>Leo Club Fez – Digital content</h3>
-        <p>2020–2021</p>
-      </article>
+    <!-- SKILLS -->
+    <section id="skills" class="scroll-mt-24 mt-14 glass-section">
+      <div class="flex items-center gap-3 mb-6 fade-in">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10v12M17 4v18M12 7v15"/></svg>
+        <h2 data-i18n="skills_title" class="text-2xl font-semibold tracking-tight">Skills</h2>
+      </div>
+      <div class="grid gap-4 md:grid-cols-2">
+        <div class="card fade-in">
+          <h3 data-i18n="skills_prog" class="font-semibold">Programming</h3>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="pill">Python</span><span class="pill">C</span><span class="pill">MATLAB</span><span class="pill">VHDL</span><span class="pill">Assembly</span>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <h3 data-i18n="skills_soft" class="font-semibold">Software</h3>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="pill">Git/GitHub</span><span class="pill">Microsoft Office</span><span class="pill">Proteus</span><span class="pill">Cadence</span><span class="pill">ADS</span><span class="pill">VSA</span><span class="pill">ModelSim</span><span class="pill">PyQt5</span><span class="pill">Vivado</span>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <h3 data-i18n="skills_hw" class="font-semibold">Hardware</h3>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="pill">Arduino</span><span class="pill">STM32</span><span class="pill">ESP32</span><span class="pill">Nexys‑A7</span><span class="pill">PICDEM2</span>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <h3 data-i18n="skills_exp" class="font-semibold">Technical Expertise</h3>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="pill">FPGA Design</span><span class="pill">Low‑Level Development</span><span class="pill">CAD</span><span class="pill">PCB Design</span><span class="pill">Microcontroller</span><span class="pill">Signal Processing</span><span class="pill">Digital & Analog Electronics</span><span class="pill">Communication Protocols</span><span class="pill">Processor Architecture</span>
+          </div>
+        </div>
+      </div>
 
-      <article class="card-block" data-id="esn">
-        <h3>ESN Bordeaux – Membre</h3>
-        <p>2025</p>
-        <p class="muted" lang-fr>Accueil & intégration étudiants internationaux</p>
-        <p class="muted" lang-en>Welcoming & integrating international students</p>
-      </article>
-    </div>
+    </section>
 
-    <!-- Compétences -->
-    <h2 class="section-title" lang-fr>Compétences</h2>
-    <h2 class="section-title" lang-en>Skills</h2>
-    <div class="cards-grid">
-      <article class="card-block" data-id="skills-it">
-        <h3 lang-fr>Informatique</h3>
-        <h3 lang-en>Computing</h3>
-        <p>Python · Matlab · ADS · PyQt5 · C · VSA · MS Office</p>
-      </article>
+    <!-- EDUCATION -->
+    <section id="education" class="scroll-mt-24 mt-14 glass-section">
+      <div class="flex items-center gap-3 mb-6 fade-in">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 4 2 10l10 6 10-6Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>
+        <h2 data-i18n="edu_title" class="text-2xl font-semibold tracking-tight">Education</h2>
+      </div>
+      <div class="grid gap-4">
+        <div class="card fade-in">
+          <h3 class="text-lg font-semibold">ENSEIRB‑MATMECA</h3>
+          <p data-i18n="edu1_deg" class="text-sm text-neutral-700 dark:text-neutral-300">Master’s in Electronics Engineering</p>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400">2024 – 2027 · Talence, France</p>
+        </div>
+        <div class="card fade-in">
+          <h3 class="text-lg font-semibold">University of Limoges</h3>
+          <p data-i18n="edu2_deg" class="text-sm text-neutral-700 dark:text-neutral-300">B.Sc. in Physics — High Frequency Electronics & Photonics (Excellence Program: 6 semesters condensed into 5)</p>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400">2021 – 2024 · Limoges, France</p>
+        </div>
+      </div>
+    </section>
 
-      <article class="card-block" data-id="skills-elec">
-        <h3 lang-fr>Électronique</h3>
-        <h3 lang-en>Electronics</h3>
-        <p lang-fr>Circuits HF · Analogique · Numérique · Signal · Puissance</p>
-        <p lang-en>RF · Analog · Digital · Signal Processing · Power</p>
-      </article>
+    <!-- CERTIFICATIONS & LANGUAGES -->
+    <section id="certifications" class="scroll-mt-24 mt-14 grid gap-4 md:grid-cols-2 glass-section">
+      <div>
+        <div class="flex items-center gap-3 mb-6 fade-in">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+          <h2 data-i18n="certs_title" class="text-2xl font-semibold tracking-tight">Certifications</h2>
+        </div>
+        <div class="grid gap-3">
+          <div class="card fade-in"><p class="text-sm"><span class="font-semibold">2025</span> — <span data-i18n="cert1">Radio Amateur Certificate — ANFR (lifetime)</span></p></div>
+          <div class="card fade-in"><p class="text-sm"><span class="font-semibold">2024</span> — <span data-i18n="cert2">PERL – Laser Safety Qualification — PYLA (valid 5 years)</span></p></div>
+          <div class="card fade-in"><p class="text-sm"><span class="font-semibold">2022</span> — <span data-i18n="cert3">Embedded Systems Essentials with ARM — edX</span></p></div>
+          <div class="card fade-in"><p class="text-sm"><span class="font-semibold">2022</span> — <span data-i18n="cert4">Python Basics for Data Science — IBM</span></p></div>
+        </div>
+      </div>
+      <div>
+        <div class="flex items-center gap-3 mb-6 fade-in">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8h14M5 12h10M5 16h6"/></svg>
+          <h2 data-i18n="langs_title" class="text-2xl font-semibold tracking-tight">Languages</h2>
+        </div>
+        <div class="card fade-in">
+          <ul class="list-disc pl-6 text-sm space-y-1">
+            <li><span class="font-medium">Arabic</span> — <span data-i18n="lang_native">native</span></li>
+            <li><span class="font-medium">French</span> — C1</li>
+            <li><span class="font-medium">German</span> — A2</li>
+            <li><span class="font-medium">English</span> — TOEIC 900/990</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-      <article class="card-block" data-id="skills-lang">
-        <h3 lang-fr>Langues</h3>
-        <h3 lang-en>Languages</h3>
-        <p lang-fr>Arabe (natif) · Français (DALF C1) · Anglais (TOEIC 900/990)</p>
-        <p lang-en>Arabic (native) · French (DALF C1) · English (TOEIC 900/990)</p>
-      </article>
-    </div>
+    <!-- VOLUNTEERING -->
+    <section id="volunteering" class="scroll-mt-24 mt-14 glass-section">
+      <div class="flex items-center gap-3 mb-6 fade-in">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-6-4.35-6-8a3 3 0 0 1 6-1 3 3 0 0 1 6 1c0 3.65-6 8-6 8z"/></svg>
+        <h2 data-i18n="vol_title" class="text-2xl font-semibold tracking-tight">Volunteering</h2>
+      </div>
+      <div class="grid gap-4">
+        <div class="card fade-in"><p class="text-sm"><span data-i18n="vol1_r" class="font-semibold">Member</span> — Erasmus Student Network (ESN) Bordeaux · <span data-i18n="present">2025 – Present</span></p></div>
+        <div class="card fade-in"><p class="text-sm"><span data-i18n="vol2_r" class="font-semibold">Treasurer</span> — Clubee · <span data-i18n="present">2025 – Present</span></p></div>
+        <div class="card fade-in"><p class="text-sm"><span data-i18n="vol3_r" class="font-semibold">Digital Content Manager</span> — Lions Clubs International · 2020 – 2021</p></div>
+      </div>
+    </section>
 
+    <!-- CONTACT -->
+    <section id="contact" class="scroll-mt-24 mt-14 glass-section">
+      <div class="flex items-center gap-3 mb-6 fade-in">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+        <h2 data-i18n="contact_title" class="text-2xl font-semibold tracking-tight">Contact</h2>
+      </div>
+      <div class="card fade-in">
+        <div class="flex flex-wrap items-center gap-3">
+          <a href="mailto:jorio.marouane@gmail.com" class="btn">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+            <span>jorio.marouane@gmail.com</span>
+          </a>
+        <a href="tel:+33673829662" class="btn">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.77.66 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.19a2 2 0 0 1 2.11-.45c.83.32 1.7.54 2.6.66A2 2 0 0 1 22 16.92Z"/></svg>
+            <span>+33 6 73 82 96 62</span>
+          </a>
+          <a href="https://github.com/Marouanejorio" target="_blank" class="btn">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.48v-1.7c-2.78.62-3.37-1.38-3.37-1.38-.45-1.18-1.12-1.5-1.12-1.5-.92-.65.07-.64.07-.64 1.02.07 1.55 1.06 1.55 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.1 0-1.13.39-2.06 1.03-2.78-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.06.8-.23 1.65-.35 2.5-.35s1.7.12 2.5.35c1.9-1.33 2.74-1.06 2.74-1.06.55 1.4.2 2.44.1 2.7.64.72 1.02 1.65 1.02 2.78 0 3.97-2.34 4.83-4.57 5.08.36.32.68.94.68 1.9v2.82c0 .27.18.59.69.49A10.04 10.04 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/></svg>
+            <span>GitHub</span>
+          </a>
+          <a href="https://linkedin.com/in/marouane-jorio-255a8821b" target="_blank" class="btn">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.63c0-1.34-.02-3.05-1.86-3.05-1.86 0-2.15 1.45-2.15 2.95v5.73H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.86 3.37-1.86 3.61 0 4.28 2.38 4.28 5.47v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.55V9h3.57v11.45Z"/></svg>
+            <span>LinkedIn</span>
+          </a>
+          <a id="cvBtn2" href="./cv_marouane_jorio_oct2025 (8).pdf" class="btn" download>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            <span data-i18n="download_cv">Download CV</span>
+          </a>
+        </div>
+        <p data-i18n="contact_blurb" class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+          I’m open to internship opportunities in embedded systems and digital electronics starting <strong>June 2026</strong>.
+        </p>
+      </div>
+    </section>
+
+    <footer class="mt-16 border-t border-neutral-200 dark:border-neutral-800 py-8 text-sm text-neutral-600 dark:text-neutral-400">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <p>© <span id="year"></span> Marouane JORIO. <span data-i18n="rights">All rights reserved.</span></p>
+        <p class="flex items-center gap-2">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          Talence, France
+        </p>
+      </div>
+    </footer>
   </main>
 
-  <footer class="site-footer">
-    © Marouane JORIO — <span lang-fr>Mis à jour en 2025</span><span lang-en>Updated in 2025</span>
-  </footer>
+  <!-- Language & Theme & Animation Script -->
+  <script>
+    const I18N = {
+      en: {
+        nav_about: "About",
+        nav_experience: "Experience",
+        nav_projects: "Projects",
+        nav_skills: "Skills",
+        nav_education: "Education",
+        nav_certifs: "Certifications",
+        nav_volunteering: "Volunteering",
+        nav_contact: "Contact",
+        tagline: "Electronics engineering student at ENSEIRB‑MATMECA — focused on embedded systems, FPGA design, and signal processing.",
+        availability: "Seeking a 3–4 month internship starting June 2026 (digital electronics / embedded systems)",
+        currently: "Currently",
+        availability_full: "Seeking a 3–4 month internship starting June 2026 (digital electronics / embedded systems)",
+        about_blurb: "This portfolio highlights hands‑on work in FPGA, embedded systems, and instrumentation — with select projects and internships below.",
+        experience_title: "Experience",
+        exp1_role: "Corporate Relations Manager",
+        exp1_time: "Apr 2025 – Present · Talence, France",
+        exp1_b1: "Managed company partnerships and event logistics; led a small team coordinating the industry forum.",
+        exp2_role: "R&D Intern",
+        exp2_time: "Jun 2025 (1 month) · Limoges, France",
+        exp2_b1: "Developed a low‑level driver in C (ESP32, ESP‑IDF) for the ADXL355 accelerometer — open‑source on GitHub.",
+        exp2_b2: "Sensor measurement & synchronization (ADXL355, BMI160), FFT computation and frequency‑domain analysis.",
+        exp3_role: "R&D Intern",
+        exp3_time: "Feb 2024 – Jul 2024 (6 months) · Limoges, France",
+        exp3_b1: "Designed and assembled a motorized optical bench for defect detection in optical fiber rods.",
+        exp3_b2: "Developed a Python GUI (PyQt5) for motor control, data acquisition (image processing), and real‑time visualization.",
+        exp4_role: "Academic Tutor",
+        exp4_time: "Sept 2023 – Jun 2024 · Limoges, France",
+        exp4_b1: "Provided academic support to first‑year physics students (L1) in Electricity and Geometrical Optics.",
+        projects_title: "Projects",
+        prj1_title: "FPGA Design Projects (NEXYS‑A7, VHDL)",
+        prj1_b1: "LFSR‑based Pseudo‑Random Number Generator (Bingo) with 7‑segment output",
+        prj1_b2: "Embedded MP3 player: FSM + synchronous counters for multiplexed 7‑segment control (Play/Pause/Fwd/Back)",
+        prj1_b3: "Automotive dashboard: real‑time display of speed, RPM, and warning indicators",
+        prj2_title: "Configurable Digital Clock on PICDEM2+",
+        prj2_b1: "Programmed PIC16F877A for time setting, counting, and display",
+        prj2_b2: "Developed in C with MPLAB IDE",
+        prj3_title: "ADXL355 ESP32 Driver (Open‑Source)",
+        prj3_b1: "Low‑level SPI driver for ADXL355 using ESP‑IDF",
+        prj3_b2: "Sensor synchronization and FFT analysis scripts",
+        skills_title: "Skills",
+        skills_prog: "Programming",
+        skills_soft: "Software",
+        skills_hw: "Hardware",
+        skills_exp: "Technical Expertise",
+        edu_title: "Education",
+        edu1_deg: "Master’s in Electronics Engineering",
+        edu2_deg: "B.Sc. in Physics — High Frequency Electronics & Photonics (Excellence Program: 6 semesters condensed into 5)",
+        certs_title: "Certifications",
+        cert1: "Radio Amateur Certificate — ANFR (lifetime)",
+        cert2: "PERL – Laser Safety Qualification — PYLA (valid 5 years)",
+        cert3: "Embedded Systems Essentials with ARM — edX",
+        cert4: "Python Basics for Data Science — IBM",
+        langs_title: "Languages",
+        lang_native: "native",
+        vol_title: "Volunteering",
+        vol1_r: "Member",
+        vol2_r: "Treasurer",
+        contact_title: "Contact",
+        contact_blurb: "I’m open to internship opportunities in embedded systems and digital electronics starting <strong>June 2026</strong>.",
+        present: "2025 – Present",
+        download_cv: "Download CV",
+        rights: "All rights reserved."
+      },
+      fr: {
+        nav_about: "À propos",
+        nav_experience: "Expérience",
+        nav_projects: "Projets",
+        nav_skills: "Compétences",
+        nav_education: "Éducation",
+        nav_certifs: "Certifications",
+        nav_volunteering: "Bénévolat",
+        nav_contact: "Contact",
+        tagline: "Élève ingénieur en électronique à ENSEIRB‑MATMECA — spécialisé en systèmes embarqués, conception FPGA et traitement du signal.",
+        availability: "Recherche un stage de 3–4 mois à partir de juin 2026 (électronique numérique / systèmes embarqués)",
+        currently: "Actuellement",
+        availability_full: "Recherche un stage de 3–4 mois à partir de juin 2026 (électronique numérique / systèmes embarqués)",
+        about_blurb: "Ce portfolio met en avant des travaux concrets en FPGA, systèmes embarqués et instrumentation — avec une sélection de projets et de stages ci‑dessous.",
+        experience_title: "Expérience",
+        exp1_role: "Responsable Relations Entreprises",
+        exp1_time: "Avr. 2025 – Aujourd’hui · Talence, France",
+        exp1_b1: "Pilotage des partenariats et de la logistique de l’événement ; management d’une petite équipe.",
+        exp2_role: "Stagiaire R&D",
+        exp2_time: "Juin 2025 (1 mois) · Limoges, France",
+        exp2_b1: "Développement d’un driver bas niveau en C (ESP32, ESP‑IDF) pour l’accéléromètre ADXL355 — open‑source sur GitHub.",
+        exp2_b2: "Mesures & synchronisation capteurs (ADXL355, BMI160), calcul de FFT et analyse fréquentielle.",
+        exp3_role: "Stagiaire R&D",
+        exp3_time: "Fév. 2024 – Juil. 2024 (6 mois) · Limoges, France",
+        exp3_b1: "Conception et assemblage d’un banc optique motorisé pour la détection de défauts dans des préformes de fibres optiques.",
+        exp3_b2: "Développement d’une interface Python (PyQt5) pour le pilotage, l’acquisition (traitement d’images) et l’affichage temps réel.",
+        exp4_role: "Tuteur académique",
+        exp4_time: "Sept. 2023 – Juin 2024 · Limoges, France",
+        exp4_b1: "Accompagnement d’étudiants de L1 en électricité et optique géométrique.",
+        projects_title: "Projets",
+        prj1_title: "Projets FPGA (NEXYS‑A7, VHDL)",
+        prj1_b1: "Générateur pseudo‑aléatoire (LFSR) avec affichage 7‑segments (Bingo)",
+        prj1_b2: "Lecteur MP3 embarqué : FSM + compteurs synchrones pour multiplexage 7‑segments (Play/Pause/Av/Rev)",
+        prj1_b3: "Tableau de bord automobile : affichage temps réel de la vitesse, du régime et des voyants",
+        prj2_title: "Horloge numérique configurable sur PICDEM2+",
+        prj2_b1: "Programmation du PIC16F877A pour le réglage, le comptage et l’affichage",
+        prj2_b2: "Développement en C sous MPLAB IDE",
+        prj3_title: "Driver ADXL355 pour ESP32 (Open‑Source)",
+        prj3_b1: "Driver SPI bas niveau pour ADXL355 sous ESP‑IDF",
+        prj3_b2: "Scripts de synchronisation capteurs et d’analyse FFT",
+        skills_title: "Compétences",
+        skills_prog: "Programmation",
+        skills_soft: "Logiciels",
+        skills_hw: "Matériel",
+        skills_exp: "Expertise technique",
+        edu_title: "Éducation",
+        edu1_deg: "Master électronique",
+        edu2_deg: "Licence Physique — Électronique Hautes Fréquences & Photonique (Programme Excellence : 6 semestres en 5)",
+        certs_title: "Certifications",
+        cert1: "Certificat Radioamateur — ANFR (à vie)",
+        cert2: "PERL – Sécurité Laser — PYLA (valide 5 ans)",
+        cert3: "Embedded Systems Essentials with ARM — edX",
+        cert4: "Python Basics for Data Science — IBM",
+        langs_title: "Langues",
+        lang_native: "natif",
+        vol_title: "Bénévolat",
+        vol1_r: "Membre",
+        vol2_r: "Trésorier",
+        contact_title: "Contact",
+        contact_blurb: "Ouvert aux opportunités de stage en systèmes embarqués et électronique numérique à partir de <strong>juin 2026</strong>.",
+        present: "2025 – Aujourd’hui",
+        download_cv: "Télécharger le CV",
+        rights: "Tous droits réservés."
+      }
+    };
 
-  <!-- Modal (injected by JS) -->
-  <div id="modal" class="modal" aria-hidden="true">
-    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <button class="modal__close" aria-label="Fermer / Close">&times;</button>
-      <div id="modal-content"></div>
-    </div>
-  </div>
+    // Persisted theme + language
+    const langBtn = document.getElementById('langBtn');
+    const themeBtn = document.getElementById('themeBtn');
+    const els = document.querySelectorAll('[data-i18n]');
+    const yearEl = document.getElementById('year');
 
-<script>
-  /* ========= Lang Switch (persistance) ========= */
-  function applyLang(lang) {
-    document.documentElement.lang = lang;
-    document.querySelectorAll('[lang-fr]').forEach(el => el.hidden = (lang !== 'fr'));
-    document.querySelectorAll('[lang-en]').forEach(el => el.hidden = (lang !== 'en'));
-    document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-    localStorage.setItem('preferredLang', lang);
-  }
-  document.getElementById('btn-fr').addEventListener('click', () => applyLang('fr'));
-  document.getElementById('btn-en').addEventListener('click', () => applyLang('en'));
-  applyLang(localStorage.getItem('preferredLang') || 'fr');
+    function setLang(lang) {
+      const dict = I18N[lang];
+      els.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.innerHTML = dict[key];
+      });
+      document.documentElement.lang = lang === 'fr' ? 'fr' : 'en';
+      localStorage.setItem('portfolio_lang', lang);
+      langBtn.textContent = lang.toUpperCase();
+    }
 
-  /* ========= Modal helpers ========= */
-  const modal = document.getElementById('modal');
-  const modalContent = document.getElementById('modal-content');
-  const closeBtn = modal.querySelector('.modal__close');
+    function applyTheme(mode) {
+      const root = document.documentElement;
+      if (mode === 'dark') {
+        root.classList.add('dark');
+        themeBtn.textContent = '☀️';
+      } else if (mode === 'light') {
+        root.classList.remove('dark');
+        themeBtn.textContent = '🌙';
+      } else {
+        // system
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        root.classList.toggle('dark', prefersDark);
+        themeBtn.textContent = prefersDark ? '☀️' : '🌙';
+      }
+    }
 
-  function openModal(innerHTML) {
-    modalContent.innerHTML = innerHTML;
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal() {
-    modal.setAttribute('aria-hidden', 'true');
-    modalContent.innerHTML = '';
-    document.body.style.overflow = '';
-  }
-  closeBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+    // Initialize year, language, theme
+    yearEl.textContent = new Date().getFullYear();
+    const savedLang = localStorage.getItem('portfolio_lang') || 'en';
+    setLang(savedLang);
 
-  /* ========= Card click -> content mapping ========= */
-  const detailsMap = {selva: `
-      <h3 id="modal-title" lang-fr>Détails du stage – SELVA SYSTEMS</h3>
-      <h3 id="modal-title" lang-en>Internship details – SELVA SYSTEMS</h3>
-      <p lang-fr><strong>Intitulé :</strong> Étude expérimentale de la synchronisation et des performances de capteurs accélérométriques dans un système embarqué radio-synchronisé pour l’analyse modale des structures.</p>
-      <p lang-en><strong>Topic:</strong> Experimental study of synchronization & performance of accelerometers in a radio-synchronized embedded system for structural modal analysis.</p>
-      <ul lang-fr>
-        <li>Driver bas niveau en C pour <strong>ADXL355</strong>, compatible <strong>ESP-IDF (ESP32)</strong>.</li>
-        <li>Driver open-source : <a href="https://github.com/Marouanejorio/adxl355" target="_blank" rel="noreferrer">GitHub</a></li>
-        <li>Mesures statiques (bruit) & dynamiques (réponse fréquentielle sur pot vibrant).</li>
-        <li>Montage : breakout <strong>ADXL355</strong> + <strong>BMI160</strong> (comparaisons).</li>
-        <li>Acquisition 140 Hz, enregistrement carte SD.</li>
-        <li>Script Python : écart-type, FFT, DSP (PSD), visualisation & interprétation.</li>
-      </ul>
-      <ul lang-en>
-        <li>Low-level C driver for <strong>ADXL355</strong>, <strong>ESP-IDF (ESP32)</strong> compatible.</li>
-        <li>Open-source driver: <a href="https://github.com/Marouanejorio/adxl355" target="_blank" rel="noreferrer">GitHub</a></li>
-        <li>Static (noise) & dynamic (frequency response with shaker) campaigns.</li>
-        <li>Setup: <strong>ADXL355</strong> breakout + <strong>BMI160</strong> for comparison.</li>
-        <li>140 Hz acquisition, SD card logging.</li>
-        <li>Python processing: std-dev, FFT, PSD, plots & interpretation.</li>
-      </ul>
-      <div class="modal__assets">
-        <a class="btn" href="fichiers/selva_rapport.pdf" download>PDF</a>
-        <a class="btn" href="fichiers/selva_code.zip" download>Code (zip)</a>
-      </div>
-    `,
-    alphanov: `
-      <h3 id="modal-title" lang-fr>Stage R&D – ALPhANOV</h3>
-      <h3 id="modal-title" lang-en>R&D Internship – ALPhANOV</h3>
-      <ul lang-fr>
-        <li>Banc optique motorisé pour détection de défauts dans barreaux de fibres.</li>
-        <li>IHM Python / PyQt5 pour pilotage & visualisation.</li>
-      </ul>
-      <ul lang-en>
-        <li>Motorized optical bench for defect detection in fiber rods.</li>
-        <li>Python / PyQt5 HMI for control & visualization.</li>
-      </ul>
-    `,
-    tutor: `
-      <h3 id="modal-title" lang-fr>Tuteur – Université de Limoges</h3>
-      <h3 id="modal-title" lang-en>Tutor – University of Limoges</h3>
-      <p lang-fr>Électricité (lois de Kirchhoff, Thévenin/Norton, filtres) · Optique géométrique.</p>
-      <p lang-en>Electricity (Kirchhoff, Thévenin/Norton, filters) · Geometric optics.</p>
-    `,
-    forum: `
-      <h3 id="modal-title" lang-fr>Forum Ingénib – Relations Entreprises</h3>
-      <h3 id="modal-title" lang-en>Forum Ingénib – Corporate Relations</h3>
-      <p lang-fr>Coordination avec les entreprises · Développement de partenariats.</p>
-      <p lang-en>Company coordination · Partnership development.</p>
-    `,
-    fpga: `
-      <h3 id="modal-title">FPGA – ENSEIRB-MATMECA</h3>
-      <ul lang-fr>
-        <li>Générateur de nombres pseudo-aléatoires (1–49).</li>
-        <li>Affichage sur 7 segments · VHDL · Quartus.</li>
-        <li>Projet validé sur carte FPGA.</li>
-      </ul>
-      <ul lang-en>
-        <li>Pseudo-random number generator (1–49).</li>
-        <li>7-segment display · VHDL · Quartus.</li>
-        <li>Validated on FPGA board.</li>
-      </ul>
-      <div class="modal__assets">
-        <a class="btn" href="fichiers/fpga_code.vhdl" download>VHDL</a>
-        <a class="btn" href="fichiers/fpga_rapport.pdf" download>Report</a>
-      </div>
-    `,
-    analog: `
-      <h3 id="modal-title" lang-fr>Projet analogique – ENSEIRB-MATMECA</h3>
-      <h3 id="modal-title" lang-en>Analog project – ENSEIRB-MATMECA</h3>
-      <ul lang-fr>
-        <li>Amplificateur audio · Schéma, routage, soudure.</li>
-        <li>Validation par tests d’écoute & mesures.</li>
-      </ul>
-      <ul lang-en>
-        <li>Audio amplifier · Schematic, routing, soldering.</li>
-        <li>Validated with listening tests & measurements.</li>
-      </ul>
-      <div class="modal__assets">
-        <a class="btn" href="fichiers/analog_schéma.pdf" download>Schéma PCB</a>
-        <a class="btn" href="fichiers/analog_rapport.pdf" download>Rapport</a>
-      </div>
-    `,
-    eirb: `
-      <h3 id="modal-title">ENSEIRB-MATMECA – Électronique</h3>
-      <p lang-fr>Cycle ingénieur (2024–2027).</p>
-      <p lang-en>Engineering curriculum (2024–2027).</p>
-    `,
-    ulim: `
-      <h3 id="modal-title" lang-fr>Univ. de Limoges – Licence Physique</h3>
-      <h3 id="modal-title" lang-en>University of Limoges – BSc Physics</h3>
-      <p lang-fr>Option EHF & Photonique (2021–2024).</p>
-      <p lang-en>HF Electronics & Photonics (2021–2024).</p>
-    `,
-    bac: `
-      <h3 id="modal-title" lang-fr>IB – Établissement Secondaire Lazrak</h3>
-      <h3 id="modal-title" lang-en>IB – Lazrak Secondary School</h3>
-      <p>09/2020 – 06/2021 · Fès / Fez.</p>
-    `,
-    pyla: `
-      <h3 id="modal-title">PERL – PYLA</h3>
-      <p lang-fr>Personne Exposée aux Risques Laser (02/2024) · Validité 5 ans.</p>
-      <p lang-en>Laser Risk Exposure (02/2024) · Valid 5 years.</p>
-    `,
-    arm: `
-      <h3 id="modal-title">Embedded Systems Essentials – ARM</h3>
-      <p>2022</p>
-      <a class="btn" href="https://courses.edx.org/certificates/ee5463969f29434695b9c67d4e8060d3" target="_blank" rel="noreferrer">Voir / View Certificate</a>
-    `,
-    ibm: `
-      <h3 id="modal-title">Python Basics for Data Science – IBM</h3>
-      <p>2022</p>
-      <a class="btn" href="https://courses.edx.org/certificates/b6f1e28e4bb74b48be05c20a7d3f3af8" target="_blank" rel="noreferrer">Voir / View Certificate</a>
-    `,
-    anfr: `
-      <h3 id="modal-title" lang-fr>Certificat Radioamateur – ANFR</h3>
-      <h3 id="modal-title" lang-en>Radio Amateur Certificate – ANFR</h3>
-      <p lang-fr>01/2025 · Validité à vie.</p>
-      <p lang-en>01/2025 · Valid for life.</p>
-    `,
-    leo: `
-      <h3 id="modal-title" lang-fr>Leo Club Fès – Création de contenu</h3>
-      <h3 id="modal-title" lang-en>Leo Club Fez – Digital content</h3>
-      <p lang-fr>Supports digitaux pour actions sociales & éducatives (2020–2021).</p>
-      <p lang-en>Digital materials for social & educational actions (2020–2021).</p>
-    `,
-    esn: `
-      <h3 id="modal-title">ESN Bordeaux – Membre</h3>
-      <p lang-fr>Accueil & intégration d’étudiants internationaux (2025).</p>
-      <p lang-en>Welcoming & integrating international students (2025).</p>
-    `,
-    "skills-it": `
-      <h3 id="modal-title" lang-fr>Informatique</h3>
-      <h3 id="modal-title" lang-en>Computing</h3>
-      <p>Python · Matlab · ADS · PyQt5 · C · VSA · Microsoft Office</p>
-    `,
-    "skills-elec": `
-      <h3 id="modal-title" lang-fr>Électronique</h3>
-      <h3 id="modal-title" lang-en>Electronics</h3>
-      <p lang-fr>Circuits HF · Analogique · Numérique · Traitement du signal · Puissance</p>
-      <p lang-en>RF · Analog · Digital · Signal Processing · Power</p>
-    `,
-    "skills-lang": `
-      <h3 id="modal-title" lang-fr>Langues</h3>
-      <h3 id="modal-title" lang-en>Languages</h3>
-      <p lang-fr>Arabe (natif) · Français (DALF C1) · Anglais (TOEIC 900/990)</p>
-      <p lang-en>Arabic (native) · French (DALF C1) · English (TOEIC 900/990)</p>
-    `
-  };
+    const savedTheme = localStorage.getItem('portfolio_theme') || 'system';
+    applyTheme(savedTheme);
 
-  // Bind all cards
-  document.querySelectorAll('.card-block').forEach(card => {
-    card.addEventListener('click', () => {
-      const id = card.dataset.id;
-      const html = detailsMap[id] || `
-        <h3 id="modal-title">Détails</h3>
-        <p lang-fr>Contenu à venir.</p>
-        <p lang-en>Details coming soon.</p>
-      `;
-      openModal(html);
-      // re-apply language inside modal
-      applyLang(document.documentElement.lang || 'fr');
+    // Theme button cycles: system -> dark -> light -> system
+    themeBtn.addEventListener('click', () => {
+      const current = localStorage.getItem('portfolio_theme') || 'system';
+      const next = current === 'system' ? 'dark' : current === 'dark' ? 'light' : 'system';
+      localStorage.setItem('portfolio_theme', next);
+      applyTheme(next);
     });
-  });
-</script>
+
+    // Language toggle
+    langBtn.addEventListener('click', () => {
+      const current = localStorage.getItem('portfolio_lang') || 'en';
+      setLang(current === 'en' ? 'fr' : 'en');
+    });
+
+    // React to OS theme changes when on 'system'
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      const current = localStorage.getItem('portfolio_theme') || 'system';
+      if (current === 'system') applyTheme('system');
+    });
+
+    // Fade-in on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('show');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+  </script>
 </body>
 </html>
