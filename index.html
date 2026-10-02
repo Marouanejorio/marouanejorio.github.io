@@ -5,6 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Marouane JORIO – Portfolio</title>
   <meta name="description" content="Bilingual portfolio (EN/FR) of Marouane JORIO — embedded systems, FPGA, signal processing." />
+  <meta name="author" content="Marouane JORIO" />
+  <meta name="theme-color" content="#10b981" />
+  <link rel="canonical" href="https://marouanejorio.github.io/" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Marouane JORIO – Portfolio" />
+  <meta property="og:description" content="Electronics engineering student at ENSEIRB-MATMECA — embedded systems, FPGA design, signal processing." />
+  <meta property="og:url" content="https://marouanejorio.github.io/" />
+  <meta property="og:image" content="https://marouanejorio.github.io/profile.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2310b981'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='800' fill='white' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E" />
+  <script>
+    // Apply saved theme before first paint to avoid a light/dark flash
+    (function () {
+      var t = 'system';
+      try { t = localStorage.getItem('portfolio_theme') || 'system'; } catch (e) {}
+      var dark = t === 'dark' || (t === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      if (dark) document.documentElement.classList.add('dark');
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -21,17 +40,18 @@
       }
     }
   </script>
-  <style>
+  <style type="text/tailwindcss">
     :root { color-scheme: light dark; }
     body { font-feature-settings: 'cv02','cv03','cv04','cv09','ss01'; }
-    .card { @apply rounded-2xl border p-5 shadow-sm transition-transform duration-300 will-change-transform; }
-    .pill { @apply inline-flex items-center rounded-full border px-3 py-1 text-sm; }
+    .card { @apply rounded-2xl border border-neutral-200 bg-white/70 p-5 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-md dark:border-neutral-800 dark:bg-neutral-900/50; }
+    .pill { @apply inline-flex items-center rounded-full border border-emerald-500/30 bg-emerald-50 px-3 py-1 text-sm text-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300; }
     .icon { width: 1.25rem; height: 1.25rem; }
     .fade-in { opacity: 0; transform: translateY(8px); transition: opacity .6s ease, transform .6s ease; }
     .fade-in.show { opacity: 1; transform: translateY(0); }
-    a.btn { @apply inline-flex items-center gap-2 rounded-xl border px-4 py-2 hover:shadow-sm transition; }
-    .nav-link { @apply text-sm hover:underline; }
-    .lang-toggle, .theme-toggle { @apply rounded-xl border px-3 py-1 text-sm; }
+    a.btn { @apply inline-flex items-center gap-2 rounded-xl border border-neutral-300 bg-white/60 px-4 py-2 text-sm transition hover:border-emerald-500 hover:text-emerald-700 hover:shadow-sm dark:border-neutral-700 dark:bg-neutral-900/40 dark:hover:text-emerald-400; }
+    .nav-link { @apply text-sm text-neutral-700 transition hover:text-emerald-600 dark:text-neutral-300 dark:hover:text-emerald-400; }
+    .nav-link.active { @apply font-semibold text-emerald-600 dark:text-emerald-400; }
+    .lang-toggle, .theme-toggle { @apply rounded-xl border border-neutral-200 px-3 py-1 text-sm transition hover:border-emerald-500 dark:border-neutral-800; }
     .logo-badge { @apply flex items-center justify-center w-9 h-9 rounded-xl border font-extrabold; }
   
 /* --- Glassmorphism & Effects --- */
@@ -59,10 +79,12 @@ body {
   box-shadow: 0 12px 28px rgba(0,0,0,0.35);
 }
 
-/* Hover glow */
-
-
-
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .fade-in { opacity: 1; transform: none; transition: none; }
+  .card { transition: none; }
+}
+:focus-visible { outline: 2px solid #10b981; outline-offset: 2px; }
 </style>
 </head>
 <body class="bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100 font-sans">
@@ -82,20 +104,33 @@ body {
         <a data-i18n="nav_education" href="#education" class="nav-link">Education</a>
         <a data-i18n="nav_certifs" href="#certifications" class="nav-link">Certifications</a>
         <a data-i18n="nav_volunteering" href="#volunteering" class="nav-link">Volunteering</a>
-        
+        <a data-i18n="nav_contact" href="#contact" class="nav-link">Contact</a>
       </div>
       <!-- Right: toggles + social -->
       <div class="flex items-center gap-2">
         <button id="langBtn" class="lang-toggle" aria-label="Toggle language">EN</button>
         <button id="themeBtn" class="theme-toggle" aria-label="Toggle theme">🌙</button>
-        <a href="https://github.com/Marouanejorio" target="_blank" aria-label="GitHub" class="p-2 rounded-xl border border-neutral-200 dark:border-neutral-800">
+        <button id="menuBtn" class="theme-toggle md:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+        <a href="https://github.com/Marouanejorio" target="_blank" rel="noopener" aria-label="GitHub" class="hidden sm:inline-flex p-2 rounded-xl border border-neutral-200 dark:border-neutral-800">
           <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.48v-1.7c-2.78.62-3.37-1.38-3.37-1.38-.45-1.18-1.12-1.5-1.12-1.5-.92-.65.07-.64.07-.64 1.02.07 1.55 1.06 1.55 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.1 0-1.13.39-2.06 1.03-2.78-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.06.8-.23 1.65-.35 2.5-.35s1.7.12 2.5.35c1.9-1.33 2.74-1.06 2.74-1.06.55 1.4.2 2.44.1 2.7.64.72 1.02 1.65 1.02 2.78 0 3.97-2.34 4.83-4.57 5.08.36.32.68.94.68 1.9v2.82c0 .27.18.59.69.49A10.04 10.04 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/></svg>
         </a>
-        <a href="https://linkedin.com/in/marouane-jorio-255a8821b" target="_blank" aria-label="LinkedIn" class="p-2 rounded-xl border border-neutral-200 dark:border-neutral-800">
+        <a href="https://linkedin.com/in/marouane-jorio-255a8821b" target="_blank" rel="noopener" aria-label="LinkedIn" class="hidden sm:inline-flex p-2 rounded-xl border border-neutral-200 dark:border-neutral-800">
           <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.63c0-1.34-.02-3.05-1.86-3.05-1.86 0-2.15 1.45-2.15 2.95v5.73H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.86 3.37-1.86 3.61 0 4.28 2.38 4.28 5.47v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.55V9h3.57v11.45Z"/></svg>
         </a>
       </div>
     </nav>
+    <div id="mobileMenu" class="hidden bg-white/95 dark:bg-neutral-950/95 border-t border-neutral-200 px-4 py-3 md:hidden dark:border-neutral-800">
+      <div class="grid gap-3">
+        <a data-i18n="nav_about" href="#about" class="nav-link">About</a>
+        <a data-i18n="nav_experience" href="#experience" class="nav-link">Experience</a>
+        <a data-i18n="nav_projects" href="#projects" class="nav-link">Projects</a>
+        <a data-i18n="nav_skills" href="#skills" class="nav-link">Skills</a>
+        <a data-i18n="nav_education" href="#education" class="nav-link">Education</a>
+        <a data-i18n="nav_certifs" href="#certifications" class="nav-link">Certifications</a>
+        <a data-i18n="nav_volunteering" href="#volunteering" class="nav-link">Volunteering</a>
+        <a data-i18n="nav_contact" href="#contact" class="nav-link">Contact</a>
+      </div>
+    </div>
   </header>
 
   <!-- HERO / ABOUT -->
@@ -105,8 +140,8 @@ body {
         <div class="fade-in">
           <!-- Profile row: image left of name -->
           <div class="flex items-center gap-4">
-            <img src="profile.jpg" alt="Profile photo of Marouane JORIO" class="rounded-full border border-neutral-200 dark:border-neutral-800 shadow-lg ring-1 ring-emerald-500/10 object-cover" style="width:150px;height:150px" onerror="this.style.display='none'">
-            <h1 class="text-4xl font-bold tracking-tight">Marouane JORIO</h1>
+            <img src="profile.jpg" alt="Profile photo of Marouane JORIO" width="150" height="150" class="h-24 w-24 sm:h-[150px] sm:w-[150px] shrink-0 rounded-full border border-neutral-200 dark:border-neutral-800 shadow-lg ring-4 ring-emerald-500/20 object-cover" onerror="this.style.display='none'">
+            <h1 class="text-3xl sm:text-4xl font-bold tracking-tight">Marouane JORIO</h1>
           </div>
           <p data-i18n="tagline" class="mt-3 text-lg text-neutral-700 dark:text-neutral-300">
             Electronics engineering student at ENSEIRB‑MATMECA — focused on embedded systems, FPGA design, and signal processing.
@@ -123,16 +158,16 @@ body {
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.77.66 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.19a2 2 0 0 1 2.11-.45c.83.32 1.7.54 2.6.66A2 2 0 0 1 22 16.92Z"/></svg>
               <span>+33 6 73 82 96 62</span>
             </a>
-            <a href="https://github.com/Marouanejorio" target="_blank" class="btn">
+            <a href="https://github.com/Marouanejorio" target="_blank" rel="noopener" class="btn">
               <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.48v-1.7c-2.78.62-3.37-1.38-3.37-1.38-.45-1.18-1.12-1.5-1.12-1.5-.92-.65.07-.64.07-.64 1.02.07 1.55 1.06 1.55 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.1 0-1.13.39-2.06 1.03-2.78-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.06.8-.23 1.65-.35 2.5-.35s1.7.12 2.5.35c1.9-1.33 2.74-1.06 2.74-1.06.55 1.4.2 2.44.1 2.7.64.72 1.02 1.65 1.02 2.78 0 3.97-2.34 4.83-4.57 5.08.36.32.68.94.68 1.9v2.82c0 .27.18.59.69.49A10.04 10.04 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/></svg>
               <span>GitHub</span>
             </a>
-            <a href="https://linkedin.com/in/marouane-jorio-255a8821b" target="_blank" class="btn">
+            <a href="https://linkedin.com/in/marouane-jorio-255a8821b" target="_blank" rel="noopener" class="btn">
               <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.63c0-1.34-.02-3.05-1.86-3.05-1.86 0-2.15 1.45-2.15 2.95v5.73H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.86 3.37-1.86 3.61 0 4.28 2.38 4.28 5.47v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.55V9h3.57v11.45Z"/></svg>
               <span>LinkedIn</span>
             </a>
-            <a id="cvBtn" href="./cv_marouane_jorio_oct2025 (8).pdf" class="btn" download>
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            <a id="cvBtn" href="cv.pdf" class="btn" download>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
               <span data-i18n="download_cv">Download CV</span>
             </a>
           </div>
@@ -222,54 +257,54 @@ body {
 
 
 <!-- PROJECT 1 - FPGA -->
-<div class="glass-section fade-in">
+<div class="card fade-in">
 <h3 data-i18n="prj1_title" class="text-lg font-semibold">FPGA Design Projects (NEXYS‑A7, VHDL)</h3>
-<img src="fpga_project.jpg" alt="FPGA project preview" class="mt-3 w-full rounded-xl border border-neutral-200 dark:border-neutral-800 object-cover" onerror="this.style.display='none'">
+<img src="fpga_project.jpg" alt="FPGA project preview" class="mt-3 w-full rounded-xl border border-neutral-200 dark:border-neutral-800 object-cover" loading="lazy" onerror="this.style.display='none'">
 <ul class="mt-3 list-disc pl-6 text-sm text-neutral-800 dark:text-neutral-200 space-y-1">
 <li data-i18n="prj1_b1">LFSR‑based Pseudo‑Random Number Generator (Bingo) with 7‑segment output</li>
 <li data-i18n="prj1_b2">Embedded MP3 player: FSM + synchronous counters for multiplexed 7‑segment control</li>
 <li data-i18n="prj1_b3">Automotive dashboard: real‑time display of speed, RPM, and indicators</li>
 </ul>
-<p class="mt-3 text-sm text-neutral-700 dark:text-neutral-300"><strong>Main skills:</strong> Vivado, Xilinx Artix‑7, VHDL</p>
+<p class="mt-3 text-sm text-neutral-700 dark:text-neutral-300"><strong data-i18n="main_skills">Main skills:</strong> Vivado, Xilinx Artix‑7, VHDL</p>
 </div>
 
 
 <!-- PROJECT 2 - PICDEM2+ CLOCK -->
-<div class="glass-section fade-in">
+<div class="card fade-in">
 <h3 data-i18n="prj2_title" class="text-lg font-semibold">Configurable Digital Clock on PICDEM2+</h3>
-<img src="pic_clock.jpg" alt="PICDEM2+ digital clock" class="mt-3 w-full rounded-xl border border-neutral-200 dark:border-neutral-800 object-cover" onerror="this.style.display='none'">
+<img src="pic_clock.jpg" alt="PICDEM2+ digital clock" class="mt-3 w-full rounded-xl border border-neutral-200 dark:border-neutral-800 object-cover" loading="lazy" onerror="this.style.display='none'">
 <ul class="mt-3 list-disc pl-6 text-sm text-neutral-800 dark:text-neutral-200 space-y-1">
 <li data-i18n="prj2_b1">Programmed PIC16F877A for time setting and counting</li>
 <li data-i18n="prj2_b2">Developed in C using MPLAB IDE</li>
 </ul>
-<p class="mt-3 text-sm text-neutral-700 dark:text-neutral-300"><strong>Main skills:</strong> PIC16F877A, MPLAB IDE, C</p>
+<p class="mt-3 text-sm text-neutral-700 dark:text-neutral-300"><strong data-i18n="main_skills">Main skills:</strong> PIC16F877A, MPLAB IDE, C</p>
 </div>
 
 
 <!-- PROJECT 3 - ADXL355 DRIVER -->
-<div class="glass-section fade-in md:col-span-2">
+<div class="card fade-in md:col-span-2">
 <div class="flex items-center justify-between">
 <h3 data-i18n="prj3_title" class="text-lg font-semibold">ADXL355 ESP32 Driver (Open‑Source)</h3>
-<a href="https://github.com/Marouanejorio" target="_blank" class="text-sm underline">View</a>
+<a data-i18n="view_github" href="https://github.com/Marouanejorio" target="_blank" rel="noopener" class="text-sm text-emerald-600 hover:underline dark:text-emerald-400">View on GitHub →</a>
 </div>
-<img src="adxl355_driver.jpg" alt="ADXL355 project" class="mt-3 w-full rounded-xl border border-neutral-200 dark:border-neutral-800 object-cover" onerror="this.style.display='none'">
+<img src="adxl355_driver.jpg" alt="ADXL355 project" class="mt-3 w-full rounded-xl border border-neutral-200 dark:border-neutral-800 object-cover" loading="lazy" onerror="this.style.display='none'">
 <ul class="mt-3 list-disc pl-6 text-sm text-neutral-800 dark:text-neutral-200 space-y-1">
 <li data-i18n="prj3_b1">Low‑level SPI driver in C for ADXL355 using ESP‑IDF</li>
 <li data-i18n="prj3_b2">Sensor synchronization + FFT analysis tools</li>
 </ul>
-<p class="mt-3 text-sm text-neutral-700 dark:text-neutral-300"><strong>Main skills:</strong> ESP‑IDF, ESP32, Python, C</p>
+<p class="mt-3 text-sm text-neutral-700 dark:text-neutral-300"><strong data-i18n="main_skills">Main skills:</strong> ESP‑IDF, ESP32, Python, C</p>
 </div>
 
 
 <!-- PROJECT 4 - SPECTRAL ANALYSIS -->
-<div class="glass-section fade-in md:col-span-2">
-<h3 class="text-lg font-semibold">Spectral Analysis Project — 4‑Lab Practical Series</h3>
+<div class="card fade-in md:col-span-2">
+<h3 data-i18n="prj4_title" class="text-lg font-semibold">Spectral Analysis Project — 4‑Lab Practical Series</h3>
 <ul class="mt-3 list-disc pl-6 text-sm text-neutral-800 dark:text-neutral-200 space-y-1">
-<li>Study of analog and digital signals using Keysight 3014A oscilloscope and Keysight 89600 VSA.</li>
-<li>Sampling, FFT analysis, aliasing reduction, windowing, autocorrelation, noise measurement.</li>
-<li>Analysis of sine waves, square waves, transient pulses, white noise; measurement of spectra & power.</li>
+<li data-i18n="prj4_b1">Study of analog and digital signals using Keysight 3014A oscilloscope and Keysight 89600 VSA.</li>
+<li data-i18n="prj4_b2">Sampling, FFT analysis, aliasing reduction, windowing, autocorrelation, noise measurement.</li>
+<li data-i18n="prj4_b3">Analysis of sine waves, square waves, transient pulses, white noise; measurement of spectra & power.</li>
 </ul>
-<p class="mt-3 text-sm text-neutral-700 dark:text-neutral-300"><strong>Main skills:</strong> DSP, high‑frequency acquisition, PSD computation, SNR optimization, instrument configuration.</p>
+<p class="mt-3 text-sm text-neutral-700 dark:text-neutral-300"><strong data-i18n="main_skills">Main skills:</strong> <span data-i18n="prj4_skills">DSP, high‑frequency acquisition, PSD computation, SNR optimization, instrument configuration.</span></p>
 </div>
 
 
@@ -352,10 +387,10 @@ body {
         </div>
         <div class="card fade-in">
           <ul class="list-disc pl-6 text-sm space-y-1">
-            <li><span class="font-medium">Arabic</span> — <span data-i18n="lang_native">native</span></li>
-            <li><span class="font-medium">French</span> — C1</li>
-            <li><span class="font-medium">German</span> — A2</li>
-            <li><span class="font-medium">English</span> — TOEIC 950/990</li>
+            <li><span data-i18n="lang_ar" class="font-medium">Arabic</span> — <span data-i18n="lang_native">native</span></li>
+            <li><span data-i18n="lang_fr" class="font-medium">French</span> — C1</li>
+            <li><span data-i18n="lang_de" class="font-medium">German</span> — A2</li>
+            <li><span data-i18n="lang_en" class="font-medium">English</span> — TOEIC 950/990</li>
           </ul>
         </div>
       </div>
@@ -390,16 +425,16 @@ body {
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.77.66 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.19a2 2 0 0 1 2.11-.45c.83.32 1.7.54 2.6.66A2 2 0 0 1 22 16.92Z"/></svg>
             <span>+33 6 73 82 96 62</span>
           </a>
-          <a href="https://github.com/Marouanejorio" target="_blank" class="btn">
+          <a href="https://github.com/Marouanejorio" target="_blank" rel="noopener" class="btn">
             <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.48v-1.7c-2.78.62-3.37-1.38-3.37-1.38-.45-1.18-1.12-1.5-1.12-1.5-.92-.65.07-.64.07-.64 1.02.07 1.55 1.06 1.55 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.1 0-1.13.39-2.06 1.03-2.78-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.06.8-.23 1.65-.35 2.5-.35s1.7.12 2.5.35c1.9-1.33 2.74-1.06 2.74-1.06.55 1.4.2 2.44.1 2.7.64.72 1.02 1.65 1.02 2.78 0 3.97-2.34 4.83-4.57 5.08.36.32.68.94.68 1.9v2.82c0 .27.18.59.69.49A10.04 10.04 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/></svg>
             <span>GitHub</span>
           </a>
-          <a href="https://linkedin.com/in/marouane-jorio-255a8821b" target="_blank" class="btn">
+          <a href="https://linkedin.com/in/marouane-jorio-255a8821b" target="_blank" rel="noopener" class="btn">
             <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.63c0-1.34-.02-3.05-1.86-3.05-1.86 0-2.15 1.45-2.15 2.95v5.73H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.86 3.37-1.86 3.61 0 4.28 2.38 4.28 5.47v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.55V9h3.57v11.45Z"/></svg>
             <span>LinkedIn</span>
           </a>
-          <a id="cvBtn2" href="./cv_marouane_jorio_oct2025 (8).pdf" class="btn" download>
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          <a id="cvBtn2" href="cv.pdf" class="btn" download>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
             <span data-i18n="download_cv">Download CV</span>
           </a>
         </div>
@@ -463,6 +498,13 @@ body {
         prj3_title: "ADXL355 ESP32 Driver (Open‑Source)",
         prj3_b1: "Low‑level SPI driver for ADXL355 using ESP‑IDF",
         prj3_b2: "Sensor synchronization and FFT analysis scripts",
+        prj4_title: "Spectral Analysis Project — 4‑Lab Practical Series",
+        prj4_b1: "Study of analog and digital signals using Keysight 3014A oscilloscope and Keysight 89600 VSA.",
+        prj4_b2: "Sampling, FFT analysis, aliasing reduction, windowing, autocorrelation, noise measurement.",
+        prj4_b3: "Analysis of sine waves, square waves, transient pulses, white noise; measurement of spectra & power.",
+        prj4_skills: "DSP, high‑frequency acquisition, PSD computation, SNR optimization, instrument configuration.",
+        main_skills: "Main skills:",
+        view_github: "View on GitHub →",
         skills_title: "Skills",
         skills_prog: "Programming",
         skills_soft: "Software",
@@ -478,9 +520,14 @@ body {
         cert4: "Python Basics for Data Science — IBM",
         langs_title: "Languages",
         lang_native: "native",
+        lang_ar: "Arabic",
+        lang_fr: "French",
+        lang_de: "German",
+        lang_en: "English",
         vol_title: "Volunteering",
         vol1_r: "Member",
         vol2_r: "Treasurer",
+        vol3_r: "Digital Content Manager",
         contact_title: "Contact",
         contact_blurb: "I’m open to internship opportunities in embedded systems and digital electronics starting <strong>June 2026</strong>.",
         present: "2025 – Present",
@@ -527,6 +574,13 @@ body {
         prj3_title: "Driver ADXL355 pour ESP32 (Open‑Source)",
         prj3_b1: "Driver SPI bas niveau pour ADXL355 sous ESP‑IDF",
         prj3_b2: "Scripts de synchronisation capteurs et d’analyse FFT",
+        prj4_title: "Projet d’analyse spectrale — série de 4 TP",
+        prj4_b1: "Étude de signaux analogiques et numériques avec l’oscilloscope Keysight 3014A et le VSA Keysight 89600.",
+        prj4_b2: "Échantillonnage, analyse FFT, réduction du repliement spectral, fenêtrage, autocorrélation, mesure du bruit.",
+        prj4_b3: "Analyse de sinusoïdes, signaux carrés, impulsions transitoires et bruit blanc ; mesure de spectres et de puissance.",
+        prj4_skills: "Traitement numérique du signal, acquisition haute fréquence, calcul de DSP, optimisation du RSB, configuration d’instruments.",
+        main_skills: "Compétences clés :",
+        view_github: "Voir sur GitHub →",
         skills_title: "Compétences",
         skills_prog: "Programmation",
         skills_soft: "Logiciels",
@@ -542,9 +596,14 @@ body {
         cert4: "Python Basics for Data Science — IBM",
         langs_title: "Langues",
         lang_native: "natif",
+        lang_ar: "Arabe",
+        lang_fr: "Français",
+        lang_de: "Allemand",
+        lang_en: "Anglais",
         vol_title: "Bénévolat",
         vol1_r: "Membre",
         vol2_r: "Trésorier",
+        vol3_r: "Responsable contenu digital",
         contact_title: "Contact",
         contact_blurb: "Ouvert aux opportunités de stage en systèmes embarqués et électronique numérique à partir de <strong>juin 2026</strong>.",
         present: "2025 – Aujourd’hui",
@@ -556,63 +615,90 @@ body {
     // Persisted theme + language
     const langBtn = document.getElementById('langBtn');
     const themeBtn = document.getElementById('themeBtn');
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
     const els = document.querySelectorAll('[data-i18n]');
     const yearEl = document.getElementById('year');
+    const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
+    // localStorage can throw (private mode, blocked storage)
+    function load(key, fallback) {
+      try { return localStorage.getItem(key) || fallback; } catch (e) { return fallback; }
+    }
+    function save(key, value) {
+      try { localStorage.setItem(key, value); } catch (e) {}
+    }
+
+    let currentLang = 'en';
     function setLang(lang) {
       const dict = I18N[lang];
       els.forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (dict[key]) el.innerHTML = dict[key];
       });
-      document.documentElement.lang = lang === 'fr' ? 'fr' : 'en';
-      localStorage.setItem('portfolio_lang', lang);
-      langBtn.textContent = lang.toUpperCase();
+      document.documentElement.lang = lang;
+      currentLang = lang;
+      save('portfolio_lang', lang);
+      // Button shows the language you switch to
+      langBtn.textContent = lang === 'en' ? 'FR' : 'EN';
+      langBtn.setAttribute('aria-label', lang === 'en' ? 'Passer en français' : 'Switch to English');
     }
 
     function applyTheme(mode) {
-      const root = document.documentElement;
-      if (mode === 'dark') {
-        root.classList.add('dark');
-        themeBtn.textContent = '☀️';
-      } else if (mode === 'light') {
-        root.classList.remove('dark');
-        themeBtn.textContent = '🌙';
-      } else {
-        // system
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        root.classList.toggle('dark', prefersDark);
-        themeBtn.textContent = prefersDark ? '☀️' : '🌙';
-      }
+      const dark = mode === 'dark' || (mode === 'system' && darkQuery.matches);
+      document.documentElement.classList.toggle('dark', dark);
+      themeBtn.textContent = dark ? '☀️' : '🌙';
+      themeBtn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
     }
 
     // Initialize year, language, theme
     yearEl.textContent = new Date().getFullYear();
-    const savedLang = localStorage.getItem('portfolio_lang') || 'en';
-    setLang(savedLang);
+    const browserLang = (navigator.language || 'en').toLowerCase().startsWith('fr') ? 'fr' : 'en';
+    setLang(load('portfolio_lang', browserLang));
+    applyTheme(load('portfolio_theme', 'system'));
 
-    const savedTheme = localStorage.getItem('portfolio_theme') || 'system';
-    applyTheme(savedTheme);
-
-    // Theme button cycles: system -> dark -> light -> system
+    // Theme button toggles between light and dark
     themeBtn.addEventListener('click', () => {
-      const current = localStorage.getItem('portfolio_theme') || 'system';
-      const next = current === 'system' ? 'dark' : current === 'dark' ? 'light' : 'system';
-      localStorage.setItem('portfolio_theme', next);
+      const next = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+      save('portfolio_theme', next);
       applyTheme(next);
     });
 
     // Language toggle
-    langBtn.addEventListener('click', () => {
-      const current = localStorage.getItem('portfolio_lang') || 'en';
-      setLang(current === 'en' ? 'fr' : 'en');
-    });
+    langBtn.addEventListener('click', () => setLang(currentLang === 'en' ? 'fr' : 'en'));
 
     // React to OS theme changes when on 'system'
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-      const current = localStorage.getItem('portfolio_theme') || 'system';
-      if (current === 'system') applyTheme('system');
+    darkQuery.addEventListener('change', () => {
+      if (load('portfolio_theme', 'system') === 'system') applyTheme('system');
     });
+
+    // Mobile menu
+    function closeMenu() {
+      mobileMenu.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.textContent = '☰';
+    }
+    menuBtn.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('hidden') === false;
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.textContent = open ? '✕' : '☰';
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+    // Hide "Download CV" buttons if cv.pdf hasn't been uploaded yet
+    fetch('cv.pdf', { method: 'HEAD' })
+      .then(r => { if (!r.ok) throw new Error(); })
+      .catch(() => document.querySelectorAll('#cvBtn, #cvBtn2').forEach(b => b.remove()));
+
+    // Highlight the nav link of the section in view
+    const navLinks = document.querySelectorAll('.nav-link');
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    document.querySelectorAll('main section[id]').forEach(sec => spy.observe(sec));
 
     // Fade-in on scroll
     const io = new IntersectionObserver((entries) => {
