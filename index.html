@@ -147,7 +147,7 @@ body {
             Electronics engineering student at ENSEIRB‑MATMECA — focused on embedded systems, FPGA design, and signal processing.
           </p>
           <p data-i18n="availability" class="mt-2 text-sm text-emerald-700 dark:text-emerald-400 font-medium">
-            Seeking a 3–4 month internship starting June 2026 (digital electronics / embedded systems)
+            Seeking an end‑of‑studies internship (PFE) starting February 2027 (embedded systems / digital electronics)
           </p>
           <div class="mt-6 flex flex-wrap gap-3">
             <a href="mailto:jorio.marouane@gmail.com" class="btn">
@@ -182,7 +182,7 @@ body {
             <div>
               <p data-i18n="currently" class="font-medium">Currently</p>
               <p data-i18n="availability_full" class="text-sm text-neutral-700 dark:text-neutral-300">
-                Seeking a 3–4 month internship starting June 2026 (digital electronics / embedded systems)
+                Seeking an end‑of‑studies internship (PFE) starting February 2027 (embedded systems / digital electronics)
               </p>
             </div>
           </div>
@@ -200,6 +200,20 @@ body {
         <h2 data-i18n="experience_title" class="text-2xl font-semibold tracking-tight">Experience</h2>
       </div>
       <div class="grid gap-4">
+        <div class="card fade-in">
+          <h3 class="text-lg font-semibold"><span data-i18n="exp0_role">Embedded Systems Intern</span> · NOVESPACE <span data-i18n="exp0_sub" class="text-sm font-normal text-neutral-500 dark:text-neutral-400">(CNES subsidiary)</span></h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 flex items-center gap-2">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <span data-i18n="exp0_time">2026 · 2nd‑year internship · Airbus A310 Zero‑G</span>
+          </p>
+          <ul class="mt-3 list-disc pl-6 text-sm text-neutral-800 dark:text-neutral-200 space-y-1">
+            <li data-i18n="exp0_b1">Improved the in‑flight environment data acquisition system (Pi‑Server: accelerations, orientation, pressure, temperature, humidity at 10 Hz) used during parabolic flight campaigns.</li>
+            <li data-i18n="exp0_b2">Ran a reproducible performance diagnosis (timing jitter vs. web load) and led the hardware migration from a Phidget SBC4 to an industrial fanless mini‑PC (GIGAIPC QBiX‑Pro).</li>
+            <li data-i18n="exp0_b3">Reworked the Python software architecture: Server‑Sent Events instead of polling (Flask + Waitress), UDP multicast instead of broadcast, threaded tasks, autonomous start with systemd.</li>
+            <li data-i18n="exp0_b4">Developed GoPro camera control over HTTP driven by flight phases (state machine, one thread per camera).</li>
+            <li data-i18n="exp0_b5">Validated in flight (Sept. 2026): 262,949 intervals with σ ≈ 0.62 ms and none above 120 ms (vs. σ up to 13.4 ms before).</li>
+          </ul>
+        </div>
         <div class="card fade-in">
           <h3 class="text-lg font-semibold"><span data-i18n="exp1_role">Corporate Relations Manager</span> · FORUM INGENIB</h3>
           <p class="text-sm text-neutral-600 dark:text-neutral-400 flex items-center gap-2">
@@ -285,7 +299,7 @@ body {
 <div class="card fade-in md:col-span-2">
 <div class="flex items-center justify-between">
 <h3 data-i18n="prj3_title" class="text-lg font-semibold">ADXL355 ESP32 Driver (Open‑Source)</h3>
-<a data-i18n="view_github" href="https://github.com/Marouanejorio" target="_blank" rel="noopener" class="text-sm text-emerald-600 hover:underline dark:text-emerald-400">View on GitHub →</a>
+<a data-i18n="view_github" href="https://github.com/Marouanejorio/adxl355" target="_blank" rel="noopener" class="text-sm text-emerald-600 hover:underline dark:text-emerald-400">View on GitHub →</a>
 </div>
 <img src="adxl355_driver.jpg" alt="ADXL355 project" class="mt-3 w-full rounded-xl border border-neutral-200 dark:border-neutral-800 object-cover" loading="lazy" onerror="this.style.display='none'">
 <ul class="mt-3 list-disc pl-6 text-sm text-neutral-800 dark:text-neutral-200 space-y-1">
@@ -327,7 +341,7 @@ body {
         <div class="card fade-in">
           <h3 data-i18n="skills_soft" class="font-semibold">Software</h3>
           <div class="mt-3 flex flex-wrap gap-2">
-            <span class="pill">Git/GitHub</span><span class="pill">Microsoft Office</span><span class="pill">Proteus</span><span class="pill">Cadence</span><span class="pill">ADS</span><span class="pill">VSA</span><span class="pill">ModelSim</span><span class="pill">PyQt5</span><span class="pill">Vivado</span><span class="pill">VITIS HLS</span>
+            <span class="pill">Git/GitHub</span><span class="pill">Microsoft Office</span><span class="pill">Proteus</span><span class="pill">Cadence</span><span class="pill">ADS</span><span class="pill">VSA</span><span class="pill">ModelSim</span><span class="pill">PyQt5</span><span class="pill">Flask</span><span class="pill">Linux / systemd</span><span class="pill">Vivado</span><span class="pill">VITIS HLS</span>
           </div>
         </div>
         <div class="card fade-in">
@@ -339,7 +353,7 @@ body {
         <div class="card fade-in">
           <h3 data-i18n="skills_exp" class="font-semibold">Technical Expertise</h3>
           <div class="mt-3 flex flex-wrap gap-2">
-            <span class="pill">FPGA Design</span><span class="pill">Low‑Level Development</span><span class="pill">CAD</span><span class="pill">PCB Design</span><span class="pill">Microcontroller</span><span class="pill">Signal Processing</span><span class="pill">Digital & Analog Electronics</span><span class="pill">Communication Protocols (I2C/SPI/UART)</span><span class="pill">Processor Architecture</span>
+            <span class="pill">FPGA Design</span><span class="pill">Low‑Level Development</span><span class="pill">CAD</span><span class="pill">PCB Design</span><span class="pill">Microcontroller</span><span class="pill">Signal Processing</span><span class="pill">Digital & Analog Electronics</span><span class="pill">Communication Protocols (I2C/SPI/UART)</span><span class="pill">Networking (UDP/HTTP/SSE)</span><span class="pill">Data Acquisition</span><span class="pill">Processor Architecture</span>
           </div>
         </div>
       </div>
@@ -439,7 +453,7 @@ body {
           </a>
         </div>
         <p data-i18n="contact_blurb" class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
-          I’m open to internship opportunities in embedded systems and digital electronics starting <strong>June 2026</strong>.
+          I’m looking for an end‑of‑studies internship (PFE) in embedded systems and digital electronics starting <strong>February 2027</strong>.
         </p>
       </div>
     </section>
@@ -468,11 +482,19 @@ body {
         nav_volunteering: "Volunteering",
         nav_contact: "Contact",
         tagline: "Electronics engineering student at ENSEIRB‑MATMECA — focused on embedded systems, FPGA design, and signal processing.",
-        availability: "Seeking a 3–4 month internship starting June 2026 (digital electronics / embedded systems)",
+        availability: "Seeking an end‑of‑studies internship (PFE) starting February 2027 (embedded systems / digital electronics)",
         currently: "Currently",
-        availability_full: "Seeking a 3–4 month internship starting June 2026 (digital electronics / embedded systems)",
+        availability_full: "Seeking an end‑of‑studies internship (PFE) starting February 2027 (embedded systems / digital electronics)",
         about_blurb: "This portfolio highlights hands‑on work in FPGA, embedded systems, and instrumentation — with select projects and internships below.",
         experience_title: "Experience",
+        exp0_role: "Embedded Systems Intern",
+        exp0_sub: "(CNES subsidiary)",
+        exp0_time: "2026 · 2nd‑year internship · Airbus A310 Zero‑G",
+        exp0_b1: "Improved the in‑flight environment data acquisition system (Pi‑Server: accelerations, orientation, pressure, temperature, humidity at 10 Hz) used during parabolic flight campaigns.",
+        exp0_b2: "Ran a reproducible performance diagnosis (timing jitter vs. web load) and led the hardware migration from a Phidget SBC4 to an industrial fanless mini‑PC (GIGAIPC QBiX‑Pro).",
+        exp0_b3: "Reworked the Python software architecture: Server‑Sent Events instead of polling (Flask + Waitress), UDP multicast instead of broadcast, threaded tasks, autonomous start with systemd.",
+        exp0_b4: "Developed GoPro camera control over HTTP driven by flight phases (state machine, one thread per camera).",
+        exp0_b5: "Validated in flight (Sept. 2026): 262,949 intervals with σ ≈ 0.62 ms and none above 120 ms (vs. σ up to 13.4 ms before).",
         exp1_role: "Corporate Relations Manager",
         exp1_time: "Apr 2025 – Present · Talence, France",
         exp1_b1: "Managed company partnerships and event logistics; led a small team coordinating the industry forum.",
@@ -529,7 +551,7 @@ body {
         vol2_r: "Treasurer",
         vol3_r: "Digital Content Manager",
         contact_title: "Contact",
-        contact_blurb: "I’m open to internship opportunities in embedded systems and digital electronics starting <strong>June 2026</strong>.",
+        contact_blurb: "I’m looking for an end‑of‑studies internship (PFE) in embedded systems and digital electronics starting <strong>February 2027</strong>.",
         present: "2025 – Present",
         download_cv: "Download CV",
         rights: "All rights reserved."
@@ -544,11 +566,19 @@ body {
         nav_volunteering: "Bénévolat",
         nav_contact: "Contact",
         tagline: "Élève ingénieur en électronique à ENSEIRB‑MATMECA — spécialisé en systèmes embarqués, conception FPGA et traitement du signal.",
-        availability: "Recherche un stage de 3–4 mois à partir de juin 2026 (électronique numérique / systèmes embarqués)",
+        availability: "Recherche un stage de fin d’études (PFE) à partir de février 2027 (systèmes embarqués / électronique numérique)",
         currently: "Actuellement",
-        availability_full: "Recherche un stage de 3–4 mois à partir de juin 2026 (électronique numérique / systèmes embarqués)",
+        availability_full: "Recherche un stage de fin d’études (PFE) à partir de février 2027 (systèmes embarqués / électronique numérique)",
         about_blurb: "Ce portfolio met en avant des travaux concrets en FPGA, systèmes embarqués et instrumentation — avec une sélection de projets et de stages ci‑dessous.",
         experience_title: "Expérience",
+        exp0_role: "Stagiaire systèmes embarqués",
+        exp0_sub: "(filiale du CNES)",
+        exp0_time: "2026 · Stage de 2e année · Airbus A310 Zero‑G",
+        exp0_b1: "Amélioration de la plateforme de mesure de données d’environnement en vol (Pi‑Server : accélérations, orientation, pression, température, humidité à 10 Hz) utilisée lors des campagnes de vols paraboliques.",
+        exp0_b2: "Diagnostic expérimental reproductible des performances (régularité temporelle vs charge web) et migration matérielle d’un Phidget SBC4 vers un mini‑PC industriel sans ventilateur (GIGAIPC QBiX‑Pro).",
+        exp0_b3: "Refonte de l’architecture logicielle Python : Server‑Sent Events au lieu de l’interrogation périodique (Flask + Waitress), UDP multicast au lieu du broadcast, tâches en threads, démarrage autonome via systemd.",
+        exp0_b4: "Développement du pilotage des caméras GoPro par requêtes HTTP selon les phases de vol (machine d’états, un thread par caméra).",
+        exp0_b5: "Validation en vol (sept. 2026) : 262 949 intervalles avec σ ≈ 0,62 ms et aucun au‑delà de 120 ms (contre σ jusqu’à 13,4 ms auparavant).",
         exp1_role: "Responsable Relations Entreprises",
         exp1_time: "Avr. 2025 – Aujourd’hui · Talence, France",
         exp1_b1: "Pilotage des partenariats et de la logistique de l’événement ; management d’une petite équipe.",
@@ -605,7 +635,7 @@ body {
         vol2_r: "Trésorier",
         vol3_r: "Responsable contenu digital",
         contact_title: "Contact",
-        contact_blurb: "Ouvert aux opportunités de stage en systèmes embarqués et électronique numérique à partir de <strong>juin 2026</strong>.",
+        contact_blurb: "Je recherche un stage de fin d’études (PFE) en systèmes embarqués et électronique numérique à partir de <strong>février 2027</strong>.",
         present: "2025 – Aujourd’hui",
         download_cv: "Télécharger le CV",
         rights: "Tous droits réservés."
