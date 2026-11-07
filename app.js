@@ -4,7 +4,7 @@ const translations = {
   "fr": {
     "skip": "Aller au contenu",
     "navProjects": "Projets",
-    "navApproach": "À propos",
+    "navApproach": "Domaines",
     "navJourney": "Parcours",
     "navContact": "Contact",
     "availability": "PFE · FÉVRIER 2027 · 6 MOIS",
@@ -17,9 +17,9 @@ const translations = {
     "visualLabel": "NUAGE DE POINTS 3D",
     "artCaption": "Visualisation 3D interactive",
     "strip1": "TRAITEMENT D’IMAGE",
-    "strip2": "SYSTÈMES EMBARQUÉS",
-    "strip3": "TRAITEMENT DU SIGNAL",
-    "projectsEyebrow": "02 / PROJETS",
+    "strip2": "ANALYSE DE DONNÉES",
+    "strip3": "SYSTÈMES EMBARQUÉS",
+    "projectsEyebrow": "04 / PROJETS",
     "projectsAside": "Projets réalisés dans le cadre de ma formation.",
     "projectsTitle": "Mes projets",
     "filterAll": "Tous <span>02</span>",
@@ -44,7 +44,7 @@ const translations = {
     "signsIntro": "Projet en cours : reconnaissance de gestes à partir de séquences de points clés extraites de vidéos, avec Python et PyTorch.",
     "sequences": "Séquences vidéo",
     "projectNote": "Les illustrations des projets sont schématiques.",
-    "approachEyebrow": "03 / À PROPOS",
+    "approachEyebrow": "01 / DOMAINES D’INTÉRÊT",
     "approachTitle": "Mes domaines<br>d’intérêt",
     "approachLead": "Je m’intéresse au traitement d’image, à l’analyse de données et aux systèmes embarqués.",
     "approachBody": "J’ai travaillé sur ces sujets pendant mes stages et mes projets, en Python, C et VHDL.",
@@ -54,9 +54,9 @@ const translations = {
     "principle2Body": "Analyse de séries temporelles, FFT, statistiques et évaluation des résultats en Python.",
     "principle3": "Systèmes embarqués",
     "principle3Body": "Acquisition de mesures sur ESP32, développement en C et traitement de données sur FPGA en VHDL.",
-    "journeyEyebrow": "04 / FORMATION ET COMPÉTENCES",
+    "journeyEyebrow": "05 / FORMATION",
     "journeyAside": "Physique, électronique, traitement du signal et de l’image.",
-    "journeyTitle": "Formation<br>et compétences",
+    "journeyTitle": "Mon parcours",
     "journeyIntro": "Après une licence de physique à Limoges, j’ai intégré l’ENSEIRB-MATMECA en électronique. Je suis aujourd’hui en option Traitement du Signal et de l’Image.",
     "degree1": "Diplôme d’ingénieur en électronique<br>Option Traitement du Signal et de l’Image",
     "university": "Université de Limoges",
@@ -73,7 +73,7 @@ const translations = {
     "skillMethods": "Analyse & développement",
     "statistics": "Statistiques",
     "engagement": "En parallèle de mes études, j’ai été responsable relations entreprises au Forum INGÉNIB et intervenant pour la Junior-Entreprise AEI.",
-    "contactEyebrow": "05 / CONTACT",
+    "contactEyebrow": "06 / CONTACT",
     "contactAvailable": "PFE DÈS FÉVRIER 2027",
     "contactTitle": "Me contacter",
     "contactBody": "Je serais ravi d’échanger avec vous au sujet d’une offre de stage ou de mes projets. Je suis basé à Bordeaux et mobile en France.",
@@ -126,9 +126,9 @@ const translations = {
     "courseworkApplied4": "Évaluation : précision, rappel, F1, AP50/AP75 et temps d’inférence.",
     "courseworkAppliedLink": "Supports TS329 ↗",
     "navInternships": "Stages",
-    "internshipsEyebrow": "01 / EXPÉRIENCE PROFESSIONNELLE",
+    "internshipsEyebrow": "03 / EXPÉRIENCE PROFESSIONNELLE",
     "internshipsTitle": "Mes stages",
-    "internshipsAside": "Systèmes embarqués et traitement d’image.",
+    "internshipsAside": "Traitement d’image, analyse de données et systèmes embarqués.",
     "stageDetails": "Voir le stage",
     "stageCode": "Code sur GitHub ↗",
     "stageNovespaceDates": "Juin - septembre 2026",
@@ -149,12 +149,41 @@ const translations = {
     "stageAlphanovSummary": "Analyse automatique de 10 000 images de barreaux de fibre optique sur un banc optique motorisé.",
     "stageAlphanov1": "Seuillage, morphologie mathématique et composantes connexes pour détecter et mesurer les objets.",
     "stageAlphanov2": "Interface Python/PyQt5 pour l’acquisition, le traitement et l’affichage en temps réel.",
-    "internshipFigureNote": "Les illustrations sont schématiques."
+    "internshipFigureNote": "Les illustrations sont schématiques.",
+    "navSkills": "Compétences",
+    "skillsEyebrow": "02 / COMPÉTENCES",
+    "skillsTitle": "Ce que je mets en pratique",
+    "skillsIntro": "Des outils et des méthodes utilisés en stage, en projet ou dans mes enseignements actuels.",
+    "skillsAll": "Tout",
+    "skillsImage": "Image & IA",
+    "skillsData": "Données & signal",
+    "skillsEmbedded": "Systèmes embarqués",
+    "skillCard1Title": "Traitement d’image",
+    "skillCard1Body": "Filtrage, seuillage, morphologie et extraction de mesures sur des images de fibres optiques.",
+    "skillCard2Title": "Apprentissage profond",
+    "skillCard2Body": "Reconnaissance de gestes à partir de séquences de points clés vidéo.",
+    "skillCard3Title": "Vision géométrique",
+    "skillCard3Body": "Homographies, correction de distorsion, stéréovision et ajustement de faisceaux.",
+    "skillCard4Title": "Séries temporelles",
+    "skillCard4Body": "Analyse des enregistrements de vol et diagnostic des irrégularités d’acquisition à 10 Hz.",
+    "skillCard5Title": "Traitement du signal",
+    "skillCard5Body": "Acquisition de mesures d’accélération et analyse fréquentielle par FFT.",
+    "skillCard6Title": "Analyse & classification",
+    "skillCard6Body": "Extraction de caractéristiques, ACP, K-means et évaluation de classifieurs.",
+    "skillCard7Title": "Microcontrôleurs",
+    "skillCard7Body": "Développement d’un driver ADXL355 et acquisition de mesures sur ESP32 en I²C.",
+    "skillCard8Title": "Conception sur FPGA",
+    "skillCard8Body": "Calcul de moyennes mobiles en VHDL sur PYNQ-Z2 et comparaison avec Python.",
+    "skillCard9Title": "Intégration Linux",
+    "skillCard9Body": "Enregistrement local, diffusion des mesures et évolution d’une plateforme embarquée.",
+    "skillsCurrent": "En cours",
+    "skillsCourseSource": "Enseignements TSI",
+    "skillsCommon": "Également utilisés"
   },
   "en": {
     "skip": "Skip to content",
     "navProjects": "Projects",
-    "navApproach": "About",
+    "navApproach": "Interests",
     "navJourney": "Background",
     "navContact": "Contact",
     "availability": "FINAL-YEAR INTERNSHIP · FEB 2027 · 6 MONTHS",
@@ -167,9 +196,9 @@ const translations = {
     "visualLabel": "3D POINT CLOUD",
     "artCaption": "Interactive 3D visualisation",
     "strip1": "IMAGE PROCESSING",
-    "strip2": "EMBEDDED SYSTEMS",
-    "strip3": "SIGNAL PROCESSING",
-    "projectsEyebrow": "02 / PROJECTS",
+    "strip2": "DATA ANALYSIS",
+    "strip3": "EMBEDDED SYSTEMS",
+    "projectsEyebrow": "04 / PROJECTS",
     "projectsAside": "Projects completed as part of my studies.",
     "projectsTitle": "My projects",
     "filterAll": "All <span>02</span>",
@@ -194,7 +223,7 @@ const translations = {
     "signsIntro": "Ongoing project: recognising gestures from sequences of keypoints extracted from videos, using Python and PyTorch.",
     "sequences": "Video sequences",
     "projectNote": "The project illustrations are schematic.",
-    "approachEyebrow": "03 / ABOUT",
+    "approachEyebrow": "01 / AREAS OF INTEREST",
     "approachTitle": "Areas of<br>interest",
     "approachLead": "I am interested in image processing, data analysis and embedded systems.",
     "approachBody": "I have worked on these topics during my internships and projects, using Python, C and VHDL.",
@@ -204,9 +233,9 @@ const translations = {
     "principle2Body": "Time series analysis, FFT, statistics and evaluation of results in Python.",
     "principle3": "Embedded systems",
     "principle3Body": "Measurement acquisition on ESP32, C development and FPGA data processing in VHDL.",
-    "journeyEyebrow": "04 / EDUCATION AND SKILLS",
+    "journeyEyebrow": "05 / EDUCATION",
     "journeyAside": "Physics, electronics, signal and image processing.",
-    "journeyTitle": "Education<br>and skills",
+    "journeyTitle": "My background",
     "journeyIntro": "After a physics degree in Limoges, I joined ENSEIRB-MATMECA to study electronics engineering. I am now specialising in Signal and Image Processing.",
     "degree1": "Engineering degree in electronics<br>Specialisation in Signal and Image Processing",
     "university": "University of Limoges",
@@ -223,7 +252,7 @@ const translations = {
     "skillMethods": "Analysis & development",
     "statistics": "Statistics",
     "engagement": "Alongside my studies, I was responsible for corporate relations at Forum INGÉNIB and worked with the AEI Junior Enterprise.",
-    "contactEyebrow": "05 / CONTACT",
+    "contactEyebrow": "06 / CONTACT",
     "contactAvailable": "INTERNSHIP FROM FEB 2027",
     "contactTitle": "Get in touch",
     "contactBody": "I would be happy to discuss an internship opportunity or my projects. I’m based in Bordeaux and open to opportunities across France.",
@@ -276,9 +305,9 @@ const translations = {
     "courseworkApplied4": "Evaluation: precision, recall, F1, AP50/AP75 and inference time.",
     "courseworkAppliedLink": "TS329 course materials ↗",
     "navInternships": "Internships",
-    "internshipsEyebrow": "01 / PROFESSIONAL EXPERIENCE",
+    "internshipsEyebrow": "03 / PROFESSIONAL EXPERIENCE",
     "internshipsTitle": "My internships",
-    "internshipsAside": "Embedded systems and image processing.",
+    "internshipsAside": "Image processing, data analysis and embedded systems.",
     "stageDetails": "View internship",
     "stageCode": "Code on GitHub ↗",
     "stageNovespaceDates": "June - September 2026",
@@ -299,7 +328,36 @@ const translations = {
     "stageAlphanovSummary": "Automatically analysing 10,000 optical fibre rod images on a motorised optical bench.",
     "stageAlphanov1": "Thresholding, mathematical morphology and connected components to detect and measure objects.",
     "stageAlphanov2": "A Python/PyQt5 interface for real-time acquisition, processing and display.",
-    "internshipFigureNote": "The illustrations are schematic."
+    "internshipFigureNote": "The illustrations are schematic.",
+    "navSkills": "Skills",
+    "skillsEyebrow": "02 / SKILLS",
+    "skillsTitle": "Tools and methods I use",
+    "skillsIntro": "Skills applied during internships, academic projects and current coursework.",
+    "skillsAll": "All",
+    "skillsImage": "Image & AI",
+    "skillsData": "Data & signal",
+    "skillsEmbedded": "Embedded systems",
+    "skillCard1Title": "Image processing",
+    "skillCard1Body": "Filtering, thresholding, morphology and measurement extraction from optical fibre images.",
+    "skillCard2Title": "Deep learning",
+    "skillCard2Body": "Gesture recognition from sequences of keypoints extracted from video.",
+    "skillCard3Title": "Geometric vision",
+    "skillCard3Body": "Homographies, distortion correction, stereo vision and bundle adjustment.",
+    "skillCard4Title": "Time series",
+    "skillCard4Body": "Flight recording analysis and diagnosis of timing irregularities in 10 Hz acquisition.",
+    "skillCard5Title": "Signal processing",
+    "skillCard5Body": "Acceleration measurement acquisition and frequency analysis using FFT.",
+    "skillCard6Title": "Analysis & classification",
+    "skillCard6Body": "Feature extraction, PCA, K-means and classifier evaluation.",
+    "skillCard7Title": "Microcontrollers",
+    "skillCard7Body": "ADXL355 driver development and measurement acquisition on ESP32 over I²C.",
+    "skillCard8Title": "FPGA design",
+    "skillCard8Body": "Moving averages in VHDL on PYNQ-Z2, compared with a Python reference.",
+    "skillCard9Title": "Linux integration",
+    "skillCard9Body": "Local recording, measurement distribution and embedded platform updates.",
+    "skillsCurrent": "In progress",
+    "skillsCourseSource": "Signal & image coursework",
+    "skillsCommon": "Also used"
   }
 };
 const cases = {
@@ -670,6 +728,38 @@ const cases = {
     }
   }
 };
+
+
+function decorateArrows(){
+ const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+ const nodes=[];
+ while(walker.nextNode()){const n=walker.currentNode;if(/[↗↑↓]/.test(n.textContent)&&!n.parentElement.closest('script,style,svg'))nodes.push(n);}
+ nodes.forEach(node=>{
+  const fragment=document.createDocumentFragment();
+  node.textContent.split(/([↗↑↓])/).forEach(part=>{
+   if(!/^[↗↑↓]$/.test(part)){fragment.append(document.createTextNode(part));return;}
+   const icon=document.createElementNS('http://www.w3.org/2000/svg','svg');
+   icon.setAttribute('viewBox','0 0 24 24');icon.setAttribute('class','direction-arrow');icon.setAttribute('aria-hidden','true');icon.setAttribute('focusable','false');
+   const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d','M5 19 19 5M5 5h14v14');
+   path.setAttribute('fill','none');path.setAttribute('stroke','currentColor');path.setAttribute('stroke-width','1.6');
+   if(part!=='↗')path.setAttribute('transform',part==='↑'?'rotate(-45 12 12)':'rotate(135 12 12)');
+   icon.append(path);fragment.append(icon);
+  });
+  node.replaceWith(fragment);
+ });
+}
+
+function updateSkillStatus(){
+ const count=[...document.querySelectorAll('.skill-card')].filter(card=>!card.hidden).length;
+ document.getElementById('skill-status').textContent=language==='fr'?`${count} compétences affichées`:`${count} skills shown`;
+ document.querySelector('.skill-filters').setAttribute('aria-label',language==='fr'?'Filtrer les compétences':'Filter skills');
+}
+document.querySelectorAll('[data-skill-filter]').forEach(button=>button.addEventListener('click',()=>{
+ document.querySelectorAll('[data-skill-filter]').forEach(item=>{const selected=item===button;item.classList.toggle('active',selected);item.setAttribute('aria-pressed',String(selected));});
+ document.querySelectorAll('.skill-card').forEach(card=>{card.hidden=button.dataset.skillFilter!=='all'&&card.dataset.skillCategory!==button.dataset.skillFilter;});
+ updateSkillStatus();
+}));
+
 const dialog = document.getElementById('project-dialog');
 let activeProject = null;
 function applyLanguage(next){
@@ -686,7 +776,7 @@ function applyLanguage(next){
  document.querySelector('.brand').setAttribute('aria-label',next==='fr'?'Marouane Jorio, accueil':'Marouane Jorio, home');
  document.getElementById('vision-art').setAttribute('aria-label',next==='fr'?'Nuage de points 3D interactif':'Interactive 3D point cloud');
  document.getElementById('copy-email').title=labels[3];document.getElementById('copy-status').textContent='';
- updateMenuLabel();updateFilterStatus();if(dialog.open&&activeProject)renderProject(activeProject);
+ updateMenuLabel();updateFilterStatus();updateSkillStatus();decorateArrows();if(dialog.open&&activeProject)renderProject(activeProject);
  try{localStorage.setItem('mj-language',next);}catch{}
  drawArt();
 }

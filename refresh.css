@@ -1,0 +1,96 @@
+/* Category browsing and generous work cards inspired by the supplied reference. */
+:root{--card-shadow:0 8px 28px #2e319209}
+html{scroll-padding-top:112px}
+body{background:#fbfcfe}
+.site-header{position:sticky;top:0;max-width:none;height:88px;background:linear-gradient(105deg,#edf0fc 0%,#f0f6fc 60%,#fff 100%);border-bottom:1px solid #dce3ef;box-shadow:0 3px 15px #2c2f4805}
+.desktop-nav{gap:23px;font-size:14px;font-weight:600}
+.header-actions{gap:23px}
+.contact-link{border:1px solid #ced5e9;padding:9px 13px;border-radius:7px;gap:17px;background:#ffffff8f}
+.hero{padding-top:64px;padding-bottom:64px}
+.hero h1{font-size:clamp(64px,6.4vw,92px);letter-spacing:-3px}
+.hero h1 em{background:linear-gradient(110deg,var(--forest),var(--blue));background-clip:text;-webkit-background-clip:text;color:transparent}
+.hero-art{box-shadow:0 16px 50px #2e31920b;border-radius:20px}
+.hero-intro{font-size:17px;line-height:1.8;color:#596178}
+.hero-buttons .text-link{border:1px solid #cbd5e7;border-radius:7px;padding:15px 18px;background:#fff}
+.expertise-strip{background:#fff}
+.approach{padding:66px 0;background:linear-gradient(125deg,#eef2fb,#f4f8fc);border-radius:0;border:0}
+.approach-layout{margin-top:24px;grid-template-columns:1fr 1fr;gap:60px}
+.approach h2{font-size:46px}
+.interest-grid{gap:24px;margin-top:32px}
+.interest-grid>div{padding:27px;background:white;border:1px solid #dce4f1;border-top:3px solid var(--blue);box-shadow:var(--card-shadow);border-radius:11px}
+.interest-grid h3{font-size:23px}
+.interest-grid p{font-size:16px;line-height:1.75}
+.competencies{padding-top:76px;padding-bottom:64px}
+.competencies h2{margin-top:22px;font-size:46px}
+.skills-intro{font-size:17px;line-height:1.7;color:var(--muted);max-width:680px;margin:18px 0 26px}
+.skill-filters{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:28px}
+.skill-filter{padding:11px 18px;border-radius:7px;border:1px solid #dce3ef;background:#fff;font-size:14px;font-weight:600;color:#596178;transition:background .2s,color .2s}
+.skill-filter.active{color:#fff;background:var(--forest);border-color:var(--forest)}
+.skill-filter:hover:not(.active){border-color:var(--blue);color:var(--blue)}
+.skill-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.skill-card{display:flex;flex-direction:column;background:#fff;border:1px solid #dfe5ef;border-radius:12px;padding:25px;box-shadow:var(--card-shadow)}
+.skill-card[hidden]{display:none}
+.skill-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:23px}
+.skill-icon{width:48px;height:45px;display:grid;place-items:center;background:#eef2fb;border:1px solid #e2e8f4;border-radius:10px;font:600 15px Calibri,Arial,sans-serif;color:var(--forest)}
+.skill-current{font-size:11px;color:#ad401d;background:#fff2ec;padding:5px 9px;border-radius:5px;border:1px solid #f2d3c7}
+.skill-card h3{font-size:23px;line-height:1.3;letter-spacing:-.3px;margin:0 0 12px;color:var(--forest)}
+.skill-card>p{font-size:16px;line-height:1.7;color:#626a7d;margin:0 0 22px;flex:1}
+.skill-tools{font-size:12px;line-height:1.7;font-weight:600;color:var(--blue);padding-bottom:19px}
+.skill-source{display:flex;align-items:center;justify-content:space-between;gap:12px;background:none;padding:15px 0 0;border-top:1px solid #e7ebf2;text-align:left;font-size:13px;color:var(--forest);width:100%;line-height:1.4}
+.skill-source:hover{color:var(--blue)}
+.skill-source>span:last-child{color:var(--blue)}
+.common-tools{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:14px;margin-top:23px;line-height:1.7}
+.common-tools>span:first-child{color:var(--forest);font-weight:600}
+.internships{padding-top:54px;padding-bottom:60px}
+.internships>h2{font-size:46px;margin-bottom:32px}
+.internship-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;border:0}
+.internship-row{display:flex;flex-direction:column;gap:22px;padding:0 0 25px;border:1px solid #dce3ef;background:#fff;box-shadow:var(--card-shadow);border-radius:13px;overflow:hidden}
+.internship-identity{display:flex;flex-direction:column;padding:0 25px}
+.internship-identity h3{font-size:27px;margin:0 0 10px}
+.internship-dates{font-size:14px;margin-bottom:4px}
+.internship-location{font-size:14px}
+.internship-visual{order:-1;height:192px;max-width:none;width:calc(100% + 50px);margin:0 -25px 25px;border:0;border-bottom:1px solid #e2e7f0;border-radius:0;background:#eef3fb}
+.internship-visual img{object-fit:contain}
+.internship-visual>span{width:31px;height:31px;bottom:13px;right:13px}
+.internship-content{display:flex;flex-direction:column;padding:0 25px;flex:1}
+.internship-content h4{font-size:18px;line-height:1.5;min-height:54px}
+.internship-summary,.internship-content>ul{font-size:15px;line-height:1.75}
+.internship-content>ul{flex:1}
+.internship-bottom{display:flex;flex-direction:column;align-items:flex-start;gap:22px;padding-top:6px}
+.internship-bottom .tags{flex-wrap:wrap}
+.internship-bottom .tags span{font-size:11px}
+.internship-actions{width:100%;justify-content:space-between;gap:12px;border-top:1px solid #e7ebf2;padding-top:18px}
+.internship-actions .project-link{font-size:13px}
+.internship-figure-note{font-size:12px}
+.projects{padding-top:30px;padding-bottom:70px}
+.project-grid{gap:28px;align-items:stretch}
+.project-card{display:flex;flex-direction:column;background:#fff;border:1px solid #dce3ef;border-radius:13px;overflow:hidden;box-shadow:var(--card-shadow)}
+.project-visual{height:310px;border-radius:0;border:0;border-bottom:1px solid #dce3ef}
+.project-info{padding:27px;display:flex;flex-direction:column;flex:1}
+.project-info h3{font-size:29px}
+.project-info>p{font-size:17px;line-height:1.75;max-width:none;min-height:0;flex:1}
+.project-bottom{margin-top:12px;gap:18px}
+.project-bottom .project-link{font-size:13px}
+.project-bottom .tags{flex-wrap:wrap}
+.journey{background:white;border-top:1px solid var(--line);padding-top:65px}
+.journey-heading h2{font-size:46px}
+.journey-heading p{font-size:16px;line-height:1.8}
+.timeline-item{background:#f5f7fc;border:1px solid #e2e7f1;border-radius:10px;padding:23px;margin:0 0 18px}
+.timeline-item:before{display:none}
+.timeline-item h3{font-size:23px}
+.timeline-item p{font-size:16px}
+.timeline-date{font-size:13px}
+.certificate-list{gap:18px;margin-top:25px}
+.certificate-list li{border:1px solid #dce3ef;border-radius:10px;background:#f8faff;padding:22px;box-shadow:var(--card-shadow)}
+.certificate-name{font-size:18px}
+.certificate-provider{font-size:14px}
+.language-name{font-size:18px}
+.language-level{font-size:14px}
+.contact{border-radius:0;background:linear-gradient(110deg,#eef0fb,#edf6fc);border-top:1px solid #dce4f1}
+@media(min-width:761px) and (max-width:1100px){.internship-list{grid-template-columns:1fr}.internship-row{display:grid;grid-template-columns:1fr 1.6fr;padding:25px;gap:32px}.internship-identity,.internship-content{padding:0}.internship-visual{width:100%;margin:0 0 20px;border:1px solid #e2e7f0;border-radius:8px}.internship-content h4{min-height:0}.skill-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:1000px){.desktop-nav{display:none}.menu-button{background:none;display:flex;flex-direction:column;gap:5px;padding:12px 0;width:22px}.menu-button span{display:block;width:22px;height:1px;background:var(--ink)}.mobile-nav{position:sticky;top:88px;z-index:4;background:white;padding:22px 6%;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:22px}.mobile-nav[hidden]{display:none}}
+@media(max-width:760px){html{scroll-padding-top:100px}.site-header{height:76px}.mobile-nav{top:76px}.contact-link{display:none}.hero{padding-top:38px;padding-bottom:36px}.hero h1{font-size:73px}.hero-intro{font-size:16px}.hero-art{border-radius:13px}.hero-buttons{gap:17px}.hero-buttons .text-link{padding:14px 13px}.approach{padding:43px 0}.approach-layout{grid-template-columns:1fr;gap:20px}.approach h2,.competencies h2,.internships>h2,.journey-heading h2{font-size:36px}.interest-grid{gap:16px}.interest-grid>div{padding:23px}.interest-grid h3{font-size:23px}.competencies{padding-top:48px;padding-bottom:34px}.skills-intro{font-size:16px}.skill-filters{gap:7px}.skill-filter{font-size:13px;padding:10px 13px}.skill-grid{grid-template-columns:1fr;gap:16px}.skill-card{padding:23px}.skill-card-top{margin-bottom:18px}.internships{padding-top:35px;padding-bottom:30px}.internship-list{grid-template-columns:1fr;gap:23px}.internship-row{gap:20px;padding-bottom:24px}.internship-visual{height:205px}.internship-location:before{content:none}.internship-content h4{min-height:0;font-size:19px}.projects{padding-top:25px;padding-bottom:45px}.project-visual{height:265px}.project-info{padding:24px}.project-info h3{font-size:26px}.project-info>p{font-size:16px}.project-bottom{flex-wrap:wrap}.journey{padding-top:45px}.timeline-item{padding:20px}.certificate-list{gap:14px}.certificate-list li{padding:21px}.contact{padding-bottom:65px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{body{background:white}.competencies{padding:20px 0}.skill-filters,.skill-source,.skill-icon,.skill-current{display:none}.skill-grid{grid-template-columns:repeat(3,1fr);gap:10px}.skill-card{padding:12px;box-shadow:none;break-inside:avoid}.skill-card[hidden]{display:flex}.skill-card h3{font-size:15px}.skill-card>p{font-size:12px}.skill-tools{font-size:10px}.internship-list{display:block}.internship-row{border:0;border-bottom:1px solid var(--line);box-shadow:none;padding:18px 0;gap:12px}.internship-identity,.internship-content{padding:0}.internship-content h4{min-height:0}.project-card,.certificate-list li{box-shadow:none}.project-info{padding:15px}.project-info>p{font-size:13px}.approach h2,.competencies h2,.internships>h2,.journey-heading h2{font-size:30px}.hero h1 em{color:var(--forest);background:none}.timeline-item{background:none;padding:15px}.site-header,.mobile-nav{display:none!important}}
+
+.direction-arrow{display:inline-block;width:1em;height:1em;vertical-align:-.1em;flex-shrink:0}.skill-source .direction-arrow{width:14px;height:14px}.contact-link .direction-arrow{width:16px;height:16px}
